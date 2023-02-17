@@ -59,7 +59,7 @@ export const GlobalStyle = createGlobalStyle`
   --grey08: #F1F3F5;
   --grey09: #F8F9FA;
   --grey10: #FDFDFD;
-
+ 
   --whiteFixed: #FFFFFF;
 
   --alert01: #CD2B31;
@@ -121,6 +121,8 @@ export const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: black;
 }
 
 html,
@@ -129,25 +131,23 @@ body {
   overflow-x: hidden;
 }
 
+button{
+  cursor: pointer;
+  border: none;
+  background:none;
+}
+
+ul{
+  list-style: none;
+}
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background:var(--grey08)
 }
 
 a {
-  color: inherit;
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
+
 
 `;

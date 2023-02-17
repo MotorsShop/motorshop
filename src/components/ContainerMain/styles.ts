@@ -1,4 +1,7 @@
 import styled from "styled-components";
-export const H1 = styled.h1`
-  color: white;
+
+export const Container = styled.main`
+  display: flex;
+  justify-content: center;
+  height: inherit;
 `;
