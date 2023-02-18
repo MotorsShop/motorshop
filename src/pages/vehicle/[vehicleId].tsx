@@ -9,7 +9,6 @@ export default function Vehicle() {
         <Link href={"/vehicle"}>Voltar</Link>
         <h1>Página com as informações do veículo</h1>
         </>
-        
     )
   }
   
