@@ -1,7 +1,7 @@
 import Link from "next/link";
-import ContainerMain from "@/components/ContainerMain/ContainerMain";
+import Banner from "@/components/Banner/Banner";
 export default function Home() {
   return (
-    <ContainerMain/>
+   <Banner/>
   );
 }
