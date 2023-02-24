@@ -2,10 +2,10 @@
 .comment_ul {
     display: flex;
     flex-direction: column;
-    background-color: #fdfdfd;
+    
     width: 751px;
     color: #495057;
-    padding-top:24px;
+    padding-top:10px;
     padding-bottom: 24px;
     padding-left: 44px;
     padding-right: 44px;
@@ -37,17 +37,19 @@
     color:#212529;
     padding-left: 8px;
     padding-right: 8px;
+    font-size: 14px;
 }
 
 .ha_dias {
     color: #868e96;
+    font-size: 12px;
 }
 
 .comment {
     padding-top: 16px;
     color: #495057;
     text-align: justify;
-    
+    font-size: 14px;
 }
 
   
