@@ -35,20 +35,15 @@ export const ContainerBanner = styled.div`
     }
 
     @media screen and (max-width: 600px) {
-      div{
-        
+      div {
         flex-direction: column;
-       
-       
       }
-      h2{
+      h2 {
         font-size: 2rem;
       }
-      button{
+      button {
         width: 100%;
       }
-       
-      
     }
   }
 `;

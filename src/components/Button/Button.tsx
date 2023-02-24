@@ -7,7 +7,6 @@ export default function Button({color, value, width, borderColor, fontColor, Pro
     if(Propsfunction){
        Propsfunction()
     }
-    
   }
   return (
     <ContainerButton color={color} width={width} borderColor={borderColor} fontColor={fontColor} padding={padding} onClick={handleClick}>

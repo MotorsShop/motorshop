@@ -11,12 +11,7 @@ export default function Footer() {
       ></Image>
       <p>© 2022 - Todos os direitos reservados.</p>
       <button>
-        <Image
-          src={"/AngleUp.svg"}
-          width={16}
-          height={16}
-          alt={"logo"}
-        ></Image>
+        <Image src={"/AngleUp.svg"} width={16} height={16} alt={"logo"}></Image>
       </button>
     </ContainerFooter>
   );
