@@ -13,7 +13,7 @@ https://user-images.githubusercontent.com/100942719/221370102-a8273730-8900-4016
 ## Tecnologias
 
 - NextJS
-- styled components
+- Styled components
 - Axios
 
 ## Instruções
