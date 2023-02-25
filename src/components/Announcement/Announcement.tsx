@@ -29,7 +29,13 @@ export default function Announcement({
         <img draggable="false" src={"/carI.jpg"} alt="car"></img>
       </figure>
       <div className="container-text">
-        <Description lines="2" size="small" fontColor="black" title={title} description={description} />
+        <Description
+          lines="2"
+          size="small"
+          fontColor="black"
+          title={title}
+          description={description}
+        />
         <User fontColor="black" name={advertiser} />
         <div className="data">
           <CarData year={year} km={km} />

@@ -6,17 +6,17 @@ export const Container = styled.div`
   overflow: hidden;
   margin-right: 48px;
 
-    .container-text {
+  .container-text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    .data {
       display: flex;
-      flex-direction: column;
-      gap: 16px;
-      .data{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
+      justify-content: space-between;
+      align-items: center;
     }
-  
+  }
+
   figure {
     width: 312px;
     height: 152px;
@@ -24,10 +24,9 @@ export const Container = styled.div`
     vertical-align: middle;
     margin: 16px 0;
     img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
-  }
-  
 `;
