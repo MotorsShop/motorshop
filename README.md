@@ -31,18 +31,8 @@ https://user-images.githubusercontent.com/100942719/221370102-a8273730-8900-4016
 
 #  Tecnologias e Ferramentas
 
-
-
-<img  width="40" height="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" />
-<img  width="40" height="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" />
-<img  width="40" height="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" />
-<img  width="40" height="40" src="[https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original-wordmark.svg](https://cdn.worldvectorlogo.com/logos/next-js.svg)" />
-
-          
-          
-          
-
-
+![Camada_x0020_1 (1)](https://user-images.githubusercontent.com/100942719/221371834-2c294c97-875e-454d-a776-7d6517836b8e.svg)
+             
 
 #  Porque utilizar o Nextjs e o Styled components ?
 
