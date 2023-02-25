@@ -8,8 +8,7 @@ Este é um aplicativo web que permite aos usuários criar, atualizar, deletar e 
 
 Link da api => futuro
 
-
-![](https://giphy.com/clips/animation-qieerwang-visdev-eMbGxk9XHHOXO0kckC)
+https://giphy.com/clips/animation-qieerwang-visdev-eMbGxk9XHHOXO0kckC
 
 ## Tecnologias
 
