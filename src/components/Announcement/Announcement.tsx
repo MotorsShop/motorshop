@@ -1,7 +1,5 @@
 import { Container } from "./styles";
-import Timer from "../Timer/Timer";
 import Description from "../Description/Description";
-import Image from "next/image";
 import CarData from "../CarData/CarData";
 import User from "../User/User";
 import Price from "../Price/Price";
@@ -9,10 +7,12 @@ import Price from "../Price/Price";
 interface Iprops {
   title: string;
   description: string;
-  year: string;
-  km: string;
+  year: number;
+  km: number;
   advertiser: string;
-  price: string;
+  price: number;
+  imageUrl: string
+
 }
 
 export default function Announcement({
@@ -22,11 +22,13 @@ export default function Announcement({
   km,
   advertiser,
   price,
+  imageUrl
+
 }: Iprops) {
   return (
     <Container>
       <figure>
-        <img draggable="false" src={"/carI.jpg"} alt="car"></img>
+        <img draggable="false" src={imageUrl} alt="car"></img>
       </figure>
       <div className="container-text">
         <Description

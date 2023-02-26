@@ -17,6 +17,8 @@ export const AuthProvider = ({ children }: AuthContextProps) =>{
     const [isOpenMenu , setOpenMenu] = useState<boolean>(false);
     const [isLogged , setIsLogged] = useState<boolean>(false);
 
+    
+
     return (
         <AuthContext.Provider value ={{isLogged, setIsLogged, isOpenMenu, setOpenMenu}}>
             {children}

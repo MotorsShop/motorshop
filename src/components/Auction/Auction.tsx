@@ -8,10 +8,11 @@ import Price from "../Price/Price";
 interface Iprops {
   title: string;
   description: string;
-  year: string;
-  km: string;
+  year: number;
+  km: number;
   advertiser: string;
-  price: string;
+  price: number;
+  imageUrl: string
 }
 
 export default function Auction({
@@ -21,6 +22,7 @@ export default function Auction({
   km,
   advertiser,
   price,
+  imageUrl
 }: Iprops) {
   return (
     <ContainerAuction>
@@ -42,7 +44,7 @@ export default function Auction({
       </div>
 
       <figure>
-        <img draggable="false" src={"/carI.jpg"} alt="car"></img>
+        <img draggable="false" src={imageUrl} alt="car"></img>
       </figure>
     </ContainerAuction>
   );

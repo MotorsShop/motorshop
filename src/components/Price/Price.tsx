@@ -1,7 +1,7 @@
 import { Container } from "./styles";
 
 interface Iprops{
-  price:string;
+  price:number;
   fontColor: string;
  
 }
@@ -9,7 +9,7 @@ interface Iprops{
 export default function Price({price, fontColor}: Iprops){
   return (
     <Container fontColor={fontColor}>
-     {
+     R${
       price
      }
     </Container>
