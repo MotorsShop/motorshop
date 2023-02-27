@@ -15,6 +15,9 @@ https://user-images.githubusercontent.com/100942719/221370102-a8273730-8900-4016
 - NextJS
 - Styled components
 - Axios
+- Typescript
+
+![Camada_x0020_1 (1)](https://user-images.githubusercontent.com/100942719/221371834-2c294c97-875e-454d-a776-7d6517836b8e.svg)
 
 ## Instruções
 
@@ -28,14 +31,7 @@ https://user-images.githubusercontent.com/100942719/221370102-a8273730-8900-4016
 
 2. Para rodar a aplicação use o seguinte comando.
 ### `yarn dev`
-
-#  Tecnologias e Ferramentas
-
-<div>
-<img width={150px} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original-wordmark.svg" />
-<img  width={150px} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" />
-</div>
-
+           
 
 #  Porque utilizar o Nextjs e o Styled components ?
 
