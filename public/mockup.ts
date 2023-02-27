@@ -69,3 +69,4 @@ export const array = [
     year: 2020,
   },
 ];
+

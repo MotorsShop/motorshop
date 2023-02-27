@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Container } from "./styles";
 
@@ -9,8 +10,8 @@ interface Iprops {
 export default function CarData({ year, km }: Iprops) {
   return (
     <Container>
-      <span>{year}</span>
       <span>{km}km</span>
+      <span>{year}</span>
     </Container>
   );
 }

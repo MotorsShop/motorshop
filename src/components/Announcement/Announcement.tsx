@@ -12,7 +12,6 @@ interface Iprops {
   advertiser: string;
   price: number;
   imageUrl: string
-
 }
 
 export default function Announcement({
@@ -23,7 +22,6 @@ export default function Announcement({
   advertiser,
   price,
   imageUrl
-
 }: Iprops) {
   return (
     <Container>

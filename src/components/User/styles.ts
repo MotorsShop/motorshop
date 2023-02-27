@@ -77,8 +77,7 @@ export const ContainerUser = styled.div<containerProps>`
     height: 36px;
     font-weight: 500;
     background-color: var(--brand02);
-    border-radius: 50%;
-    
+    border-radius: 50%;    
   }
 
   @media screen and (max-width: 900px) {

@@ -4,6 +4,7 @@ import { array } from "public/mockup";
 import Auction from "@/components/Auction/Auction";
 import Carousels from "@/patterns/Carousels/Carousels";
 
+
 export default function Home() {
  
   return (
