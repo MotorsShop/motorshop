@@ -11,7 +11,7 @@ export default function Vehicle() {
     const vehicleId = router.query.vehicleId
     return (
     <>
-    <body className={styles.body}>  
+    <div className={styles.body}>  
         <section className={styles.section1} >
             <div className={styles.banner} >
                 <PhotographCar/>
@@ -40,7 +40,7 @@ export default function Vehicle() {
                 </p>
             </div>           
         </aside>
-    </body>
+    </div>
     </>
     )
   }

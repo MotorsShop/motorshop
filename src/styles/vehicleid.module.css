@@ -14,8 +14,8 @@
  }
 
 .banner {
-    background-color: var(--brand02);
-    height: 580px; 
+    /* background-color: var(--brand02);
+    height: 580px;  */
     padding: 40px 46px 73px 181px;
     border: none;
 
@@ -31,9 +31,9 @@
 }
 
 .ownerGallery {
-    padding: 0px;
-    background-color: var(--brand02);
-    height: 580px; 
+    /* padding: 0px; */
+    /* background-color: var(--brand02);
+    height: 580px;  */
     padding: 40px 46px 34px 0px;
     border: none;
     padding-bottom: 10px;

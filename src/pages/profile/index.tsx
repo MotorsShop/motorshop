@@ -3,6 +3,7 @@ import Auction from "@/components/Auction/Auction";
 import Carousel from "@/components/Carousel/Carousel";
 import { array } from "public/mockup";
 import { useState } from "react";
+import Carousels from "@/patterns/Carousels/Carousels";
 import {
   Container,
   ContainerBlue,
@@ -17,6 +18,7 @@ import ModalAnnounce from "@/components/AnnouncementsModals/CreateAnnounce/Creat
 import SucessModal from "@/components/AnnouncementsModals/SucessModal/SucessModal";
 import ModalUpdateAnnounce from "@/components/AnnouncementsModals/UpdateAnnounce/UpdateModal";
 import DeleteModal from "@/components/AnnouncementsModals/DeleteModal/DeleteModal";
+import User from "@/components/User/User";
 export default function Profile() {
   const [user, SetUser] = useState({});
 
@@ -25,20 +27,8 @@ export default function Profile() {
       <ContainerBlue></ContainerBlue>
       <Container>
         <ContainerDescriptonUser>
-          <ContainerIntern>
-            <ContainerImgUser fontColor="black">
-              {user.img ? (
-                <img src={user.img} alt={user.name} />
-              ) : (
-                <div>
-                  <p>SL</p>
-                </div>
-              )}
-            </ContainerImgUser>
-            <ContainerUserAdm>
-              <p>Samuel Leão</p>
-              <ContainerUserAdmTag>Anunciante</ContainerUserAdmTag>
-            </ContainerUserAdm>
+        <ContainerIntern>
+           <User path="/profile" typeUser="advertiser" profile fontColor="white" name="Usuário doidão"/>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               Quisquam, accusantium recusandae, totam explicabo fuga non quo
@@ -55,45 +45,23 @@ export default function Profile() {
         </Demostrativo>
       </Container>
       <div>
-        <Carousel title={"Leilão"} list={array}>
-          {array.map((ele, index) => (
-            <Auction
-              price="R$ 00.000,00"
-              advertiser="Pedro Silva"
-              year="2015"
-              km="0km"
-              title={ele.title}
-              description={ele.description}
-              key={index}
-            />
-          ))}
-        </Carousel>
-        <Carousel title={"Carros"} list={array}>
-          {array.map((ele, index) => (
-            <Announcement
-              price="R$ 00.000,00"
-              advertiser="Pedro Silva"
-              year="2015"
-              km="0km"
-              title={ele.title}
-              description={ele.description}
-              key={index}
-            />
-          ))}
-        </Carousel>
-        <Carousel title={"Motos"} list={array}>
-          {array.map((ele, index) => (
-            <Announcement
-              price="R$ 00.000,00"
-              advertiser="Pedro Silva"
-              year="2015"
-              km="0km"
-              title={ele.title}
-              description={ele.description}
-              key={index}
-            />
-          ))}
-        </Carousel>
+      <div>
+      <Carousel title={"Leilão"} >
+        {array.map((ele, index) => (
+          <Auction
+            price={ele.price}
+            advertiser="Pedro Silva"
+            year={ele.year}
+            km={ele.km}
+            title={ele.title}
+            description={ele.description}
+            key={index}
+            imageUrl={ele.cover_img}
+          />
+        ))}
+      </Carousel>
+      <Carousels/>
+      </div>
       </div>
     </>
   );
