@@ -1,7 +1,9 @@
 import { ContainerIconMenu } from "./styles";
 import Image from "next/image";
 import { useContext } from "react";
-import { AuthContext } from "@/contexts/AuthContext";
+import { AuthContext } from "../../contexts/AuthContext";
+
+import React from "react";
 
 export default function IconMenu() {
 

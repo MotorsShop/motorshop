@@ -1,5 +1,6 @@
 import { ContainerModal, Overlay } from "./styles";
 import { IpropsModal } from "@/@types/PropsComponents";
+import React from "react";
 
 export default function Modal({ types, children, functionClose }: IpropsModal) {
   

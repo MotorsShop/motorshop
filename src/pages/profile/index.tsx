@@ -17,7 +17,6 @@ import ModalAnnounce from "@/components/AnnouncementsModals/CreateAnnounce/Creat
 import SucessModal from "@/components/AnnouncementsModals/SucessModal/SucessModal";
 import ModalUpdateAnnounce from "@/components/AnnouncementsModals/UpdateAnnounce/UpdateModal";
 import DeleteModal from "@/components/AnnouncementsModals/DeleteModal/DeleteModal";
-
 export default function Profile() {
   const [user, SetUser] = useState({});
 

@@ -5,13 +5,15 @@ import Image from "next/image";
 import CarData from "../CarData/CarData";
 import User from "../User/User";
 import Price from "../Price/Price";
+import React from "react";
 interface Iprops {
   title: string;
   description: string;
-  year: string;
-  km: string;
+  year: number;
+  km: number;
   advertiser: string;
-  price: string;
+  price: number;
+  imageUrl: string
 }
 
 export default function Auction({
@@ -21,6 +23,7 @@ export default function Auction({
   km,
   advertiser,
   price,
+  imageUrl
 }: Iprops) {
   return (
     <ContainerAuction>
@@ -28,7 +31,7 @@ export default function Auction({
         <div className="container-text">
           <Timer />
           <Description fontColor="white" size="big" title={title} description={description} />
-          <User fontColor="white" name={advertiser} />
+          <User path="/profile" fontColor="white" name={advertiser} />
           <div className="data">
           <CarData year={year} km={km} />
           <Price fontColor="white" price={price}/>
@@ -42,7 +45,7 @@ export default function Auction({
       </div>
 
       <figure>
-        <img draggable="false" src={"/carI.jpg"} alt="car"></img>
+        <img draggable="false" src={imageUrl} alt="car"></img>
       </figure>
     </ContainerAuction>
   );
