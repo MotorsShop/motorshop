@@ -1,0 +1,19 @@
+.contanerComment {
+    display: flex;
+    flex-direction: column;
+    background-color: #fdfdfd;
+    width: 751px;
+    color: #212529;
+   }
+@media (max-width: 750px) {
+    .contanerComment {
+        width: 100% 
+}
+}
+
+.tituloComentario {
+    margin-top: 36px;
+    margin-left: 44px;
+    font-size: 20px;
+    
+}

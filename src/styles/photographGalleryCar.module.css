@@ -1,0 +1,20 @@
+
+.photoCar {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;   
+    background-color: #e9ecef;
+    width: 108px;
+    height: 108px;
+    border-radius: 4px;
+}
+
+@media (max-width: 750px) {
+    .photoCar {
+        width: 100% 
+    }
+}
+
+
+
