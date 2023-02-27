@@ -1,6 +1,15 @@
+import React from "react";
 import { ContainerButton } from "./styles";
-import { IpropsBotton } from "@/@types/PropsComponents";
 
+interface IpropsBotton{   
+  color?: string;
+  width?: string;
+  value?: string;
+  fontColor?: string
+  borderColor?: string;
+  Propsfunction?: any;
+  padding?:string;
+}
 export default function Button({color, value, width, borderColor, fontColor, Propsfunction, padding}: IpropsBotton){
   
   const handleClick = () => {

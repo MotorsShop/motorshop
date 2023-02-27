@@ -5,6 +5,7 @@ import Image from "next/image";
 import CarData from "../CarData/CarData";
 import User from "../User/User";
 import Price from "../Price/Price";
+import React from "react";
 interface Iprops {
   title: string;
   description: string;
@@ -30,7 +31,7 @@ export default function Auction({
         <div className="container-text">
           <Timer />
           <Description fontColor="white" size="big" title={title} description={description} />
-          <User fontColor="white" name={advertiser} />
+          <User path="/profile" fontColor="white" name={advertiser} />
           <div className="data">
           <CarData year={year} km={km} />
           <Price fontColor="white" price={price}/>

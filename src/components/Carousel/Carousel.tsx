@@ -2,14 +2,14 @@ import { ContainerCarousel } from "./styles";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { ReactNode } from "react";
+import React from "react";
 
 interface Iprops {
   title: string;
-  list: any[];
   children: ReactNode;
 }
 
-export default function Carousel({ title, list, children }: Iprops) {
+export default function Carousel({ title, children }: Iprops) {
   const ref = useRef<HTMLInputElement>(null);
   const [width, setWidth] = useState<number>(0);
 

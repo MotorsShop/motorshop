@@ -38,7 +38,7 @@ export default function Announcement({
           title={title}
           description={description}
         />
-        <User fontColor="black" name={advertiser} />
+        <User path="/profile" fontColor="white" profile={false} name={advertiser} />
         <div className="data">
           <CarData year={year} km={km} />
           <Price fontColor="black" price={price} />
