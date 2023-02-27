@@ -1,38 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">
+   Projeto de final de curso  
+</h1>
 
-## Getting Started
 
-First, run the development server:
+Este é um aplicativo web que permite aos usuários criar, atualizar, deletar e visualizar anúncios de veículos. Ele foi construído utilizando as tecnologias Next.js, Axios e Styled Components.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Link da api => futuro
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+https://user-images.githubusercontent.com/100942719/221370102-a8273730-8900-4016-ad56-948ae63ddfe1.mp4
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Tecnologias
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- NextJS
+- Styled components
+- Axios
+- Typescript
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+![Camada_x0020_1 (1)](https://user-images.githubusercontent.com/100942719/221371834-2c294c97-875e-454d-a776-7d6517836b8e.svg)
 
-## Learn More
+## Instruções
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone o repositório:
+   
+### `git clone https://github.com/MotorsShop/motorshop.git` 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Para rodar o app é necessário rodar installar todas as dependências utilizadas no projeto.
+   
+### `yarn install`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+2. Para rodar a aplicação use o seguinte comando.
+### `yarn dev`
+           
 
-## Deploy on Vercel
+#  Porque utilizar o Nextjs e o Styled components ?
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+O objetivo de utilizar Next.js e Styled Components em uma aplicação é aproveitar os benefícios que essas tecnologias podem oferecer.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Next.js é um framework de React que oferece recursos como renderização do lado do servidor, geração de páginas estáticas, roteamento e muito mais. Ele permite que o desenvolvimento de aplicativos web seja mais eficiente e escalável, além de fornecer uma experiência de usuário mais rápida e responsiva.
+
+Styled Components é uma biblioteca que permite estilizar componentes React utilizando CSS-in-JS. Ela permite criar estilos de forma mais intuitiva e organizada, além de oferecer recursos como tematização e reaproveitamento de estilos. Com Styled Components, também é possível gerar estilos dinamicamente com base em props, o que facilita a criação de componentes reutilizáveis.
+
+Ao utilizar Next.js e Styled Components juntos, é possível obter uma experiência de desenvolvimento mais produtiva e uma aplicação com melhor desempenho e escalabilidade. Além disso, a modularização dos estilos com Styled Components facilita a manutenção do código e a criação de interfaces mais coesas e consistentes.
+
+
+## Autores
+
+- [Ely Muniz](https://github.com/ElyMuniz)
+
+- [Naiane Reis](https://github.com/NaianeReis27)
+
+- [Erika Fábio](https://github.com/erikafabio)
+
+
+
