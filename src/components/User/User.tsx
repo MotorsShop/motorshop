@@ -1,9 +1,14 @@
 import { ContainerUser } from "./styles";
-export default function User() {
-  const name = "Samuel Leão";
+
+interface Iprops{
+  name:string
+  fontColor: string
+}
+
+export default function User({name, fontColor}: Iprops){
   const acronymName = name.trim().toUpperCase().split(" ");
   return (
-    <ContainerUser>
+    <ContainerUser fontColor={fontColor}>
       <div>
         <p>{acronymName[0][0] + acronymName[1][0]}</p>
       </div>
