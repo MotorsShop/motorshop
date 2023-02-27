@@ -1,12 +1,8 @@
-import Link from "next/link";
+import React from "react";
+import ProfileMain from "../../patterns/ProfileMain/ProfileMain";
 
 export default function Profile() {
   return (
-    <>
-      <h1>Página de Perfil</h1>
-      <div>
-        <Link href={"/"}>Voltar</Link>
-      </div>
-    </>
+    <ProfileMain/>
   );
 }

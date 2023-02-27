@@ -2,9 +2,11 @@ import { ContainerMenu } from "./styles";
 import Button from "../Button/Button";
 import Modal from "../Modal/Modal";
 import { useContext } from "react";
-import { AuthContext } from "@/contexts/AuthContext";
+import { AuthContext } from "../../contexts/AuthContext";
 import Link from "next/link";
 import Router from "next/router";
+import React from "react";
+
 export default function Menu() {
   const { setOpenMenu, isLogged } = useContext(AuthContext);
 

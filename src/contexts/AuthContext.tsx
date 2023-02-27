@@ -1,4 +1,5 @@
 import { ReactNode, useState, createContext, Dispatch, SetStateAction} from "react";
+import React from "react";
 
 export interface AuthContextData {
     isLogged: boolean

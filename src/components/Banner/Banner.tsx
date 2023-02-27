@@ -1,6 +1,7 @@
 import { ContainerBanner } from "./styles";
 import Router from "next/router";
 import Button from "../Button/Button";
+import React from "react";
 export default function Banner() {
   const redirect = (data: string) => {
     Router.push(data);
