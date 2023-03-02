@@ -2,33 +2,43 @@ import styled, { css } from "styled-components";
 
 interface containerProps {
   fontColor: string;
-  profile?: boolean;
+  pColor?: string;
+  type?: "navibar"| "profile";
+  center?: boolean;
+  fontWeight? : number;
 }
 
 export const ContainerUser = styled.div<containerProps>`
   display: flex;
   flex-direction: column;
   gap: 24px;
+
+  .profile-name{
+    font-weight: ${({fontWeight}) => fontWeight? fontWeight : 500};
+    color: ${({pColor}) => pColor? pColor : "black"};
+  }
+
   div {
     display: flex;
-    justify-content: flex-start;
+    align-items: ${({center}) => center? "center" : "flex-start"};
+    justify-content: ${({center}) => center? "center" : "flex-start"};
     cursor: pointer;
-    ${({ profile }) =>
-      profile
+    ${({ type }) =>
+      type == "profile"
         ? css`
             flex-direction: column;
             gap: 24px;
 
             p{
               font-size: 20px;
-              font-weight: 500;
             }
 
             div{
+              align-items: center;
               flex-direction: row;
             }
 
-            .profile-name{
+            .sigla-name{
               font-size: 36px;
               font-family: 'Inter'
               font-weight: 500;
@@ -58,13 +68,15 @@ export const ContainerUser = styled.div<containerProps>`
         `
         : css`
     gap:15px;
-
+    height: inherit;
+    align-items: center;
     div{
     display: flex;
     justify-content: center;
     align-items: center;
     
-    .profile-name{
+    
+    .sigla-name{
       font-size: 14px;
       font-family: 'Inter'
       font-weight: 600;
@@ -77,7 +89,8 @@ export const ContainerUser = styled.div<containerProps>`
     height: 36px;
     font-weight: 500;
     background-color: var(--brand02);
-    border-radius: 50%;    
+    border-radius: 50%; 
+    
   }
 
   @media screen and (max-width: 900px) {
@@ -89,11 +102,11 @@ export const ContainerUser = styled.div<containerProps>`
     };
   `}
 
-    .profile-name {
+    .sigla-name {
       color: ${({ fontColor }) => (fontColor ? fontColor : "black")};
       font-family: "Lexend", sans-serif;
     }
-
+   
     .profile-type {
       padding: 4px 8px;
       background-color: var(--brand04);

@@ -1,8 +1,15 @@
 import { ContainerProfile } from "./styles";
 import Carousels from "../Carousels/Carousels";
 import User from "@/components/User/User";
-
-export default function ProfileMain() {
+import Button from "@/components/Button/Button";
+import Carousel from "@/components/Carousel/Carousel";
+import Auction from "@/components/Auction/Auction";
+import ModalAnnounce from "@/components/AnnouncementsModals/CreateAnnounce/CreateModal";
+interface Iprops {
+  profile?: boolean;
+  auction?: any[];
+}
+export function ProfileMain({ profile, auction }: Iprops) {
   return (
     <ContainerProfile>
       <div className="container">
@@ -11,7 +18,7 @@ export default function ProfileMain() {
             fontColor="white"
             typeUser="advertiser"
             name="Usuário Doidão"
-            profile={true}
+            type="profile"
             path="/profile"
           />
           <div>
@@ -19,10 +26,32 @@ export default function ProfileMain() {
             industry. Lorem Ipsum has been the industrys standard dummy text
             ever since the 1500s
           </div>
+          {
+            profile &&  <ModalAnnounce/>
+          }
+          
         </div>
         <div className="container-back" />
       </div>
-      <Carousels />
+      {profile && (
+        <Carousel title={"Leilão"}>
+          {auction &&
+            auction.map((ele, index) => (
+              <Auction
+                profile
+                price={ele.price}
+                advertiser="Pedro Silva"
+                year={ele.year}
+                km={ele.km}
+                title={ele.title}
+                description={ele.description}
+                key={index}
+                imageUrl={ele.cover_img}
+              />
+            ))}
+        </Carousel>
+      )}
+      <Carousels profile={profile} />
     </ContainerProfile>
   );
 }

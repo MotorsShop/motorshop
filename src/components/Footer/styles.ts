@@ -6,10 +6,10 @@ export const ContainerFooter = styled.footer`
   min-height: 140px;
   position: relative;
   bottom: 0;
-  left: 0;
   padding: 0 5%;
   display: flex;
   align-items: center;
+  margin-top:50px;
   justify-content: space-between;
   p {
     color: var(--whiteFixed);

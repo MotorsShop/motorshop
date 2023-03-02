@@ -10,8 +10,8 @@ interface Iprops {
 export default function CarData({ year, km }: Iprops) {
   return (
     <Container>
-      <span>{km}km</span>
-      <span>{year}</span>
+      <span>{km} KM</span>
+      <span>{year}</span> 
     </Container>
   );
 }

@@ -9,16 +9,6 @@ export default function ModalNavbar() {
   return (
     <Container>
       {isOpenMenu && <Menu />}
-      {/* <Button
-        value="Autenticar"
-        borderColor="#DEE2E6"
-        Propsfunction={() => setIsLogged(true)}
-      />
-      <Button
-        value="Desautenticação"
-        borderColor="#DEE2E6"
-        Propsfunction={() => setIsLogged(false)}
-      /> */}
     </Container>
   );
 }

@@ -8,9 +8,10 @@ export const ContainerAuction = styled.div`
   text-align: center;
   overflow: hidden;
   position: relative;
-  
+  flex-direction: column;
 
-  button {
+  .container-btns {
+    gap: 16px;
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -18,14 +19,13 @@ export const ContainerAuction = styled.div`
     height: 62px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     background-color: var(--brand01);
     padding: 0 36px;
-  
-    p{
+
+    p {
       color: var(--whiteFixed);
       font-size: 16px;
-      font-weight:600;
+      font-weight: 600;
     }
   }
   .container-front {
@@ -39,7 +39,7 @@ export const ContainerAuction = styled.div`
       flex-direction: column;
       padding: 24px 36px;
       gap: 28px;
-      .data{
+      .data {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -50,10 +50,9 @@ export const ContainerAuction = styled.div`
     overflow: hidden;
     vertical-align: middle;
     img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
-  }
-  
 `;
