@@ -32,7 +32,7 @@ export default function Announcement({
 }: Iprops) {
   return (
     <Container>
-      <figure>
+      <figure onDoubleClick={() => Router.push(`/vehicle/${id}`)}>
         <img draggable="false" src={imageUrl} alt="car"></img>
       </figure>
       <div className="container-text">

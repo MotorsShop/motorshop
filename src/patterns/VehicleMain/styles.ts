@@ -4,7 +4,7 @@ export const ContainerBack = styled.div`
   width: 100%;
   position: absolute;
   background-color: var(--brand02);
-  height: 430px;
+  height: 480px;
   top: 0;
   z-index: -1;
 `;

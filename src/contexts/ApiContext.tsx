@@ -5,7 +5,8 @@ import React from "react";
 export interface ApiContextData { 
     annoucements: IList[]
     annoucement: IList| null
-    retriveAnnoucement: (data:string) => void
+    retriveAnnoucement: (data: string | string[]) => void;
+    setAnnoucement: Dispatch<SetStateAction<IList| null>>;
 }
 
 export interface IList {
@@ -47,17 +48,16 @@ export const ApiProvider = ({ children }: ApiContextProps) =>{
         }
       }
 
-      const retriveAnnoucement = async (data:string) => {
+      const retriveAnnoucement = async (data:string | string[]) => {
         try {
           const response = await api.get(`/anouncement/${data}`);
-          console.log(response)
           setAnnoucement(response.data)
         } catch (error) {
           console.error(error);
         }
       }
     return (
-        <ApiContext.Provider value ={{annoucements, annoucement, retriveAnnoucement}}>
+        <ApiContext.Provider value ={{annoucements, annoucement, retriveAnnoucement, setAnnoucement}}>
             {children}
         </ApiContext.Provider>
     )

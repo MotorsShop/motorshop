@@ -12,13 +12,14 @@ import { useContext } from "react";
 import { ApiContext } from "@/contexts/ApiContext";
 import { useEffect } from "react";
 export function VehicleMain() {
-  const { annoucement, retriveAnnoucement } = useContext(ApiContext);
+  const { annoucement, retriveAnnoucement ,setAnnoucement} = useContext(ApiContext);
 
   const router = useRouter();
   useEffect(() => {
     if (router.query.vehicleId) {
-      retriveAnnoucement(router.query.vehicleId[0]);
+      retriveAnnoucement(router.query.vehicleId);
     }
+    return setAnnoucement(null)
   }, [router.query.vehicleId]);
 
   return (

@@ -25,6 +25,7 @@ export const Container = styled.div`
   }
 
   figure {
+    cursor: pointer;
     width: 312px;
     height: 152px;
     overflow: hidden;
