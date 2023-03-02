@@ -1,15 +1,22 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 312px;
   flex-shrink: 0;
   overflow: hidden;
   margin-right: 48px;
-
+  gap: 16px;
+  .container-btns {
+    display: flex;
+    gap: 20px;
+  }
   .container-text {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    
     .data {
       display: flex;
       justify-content: space-between;
@@ -18,6 +25,7 @@ export const Container = styled.div`
   }
 
   figure {
+    cursor: pointer;
     width: 312px;
     height: 152px;
     overflow: hidden;

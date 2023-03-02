@@ -25,7 +25,7 @@ export default function Navbar() {
         </ul>
 
         {isLogged ? (
-          <User  fontColor="black" profile={false} name="João Pedro" path="/profile"/>
+          <User  fontColor="black"  name="João Pedro" path="/profile"/>
         ) : (
           <ul className="container_btns">
             <li>

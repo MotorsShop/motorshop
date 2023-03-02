@@ -5,7 +5,7 @@ export const ContainerTime = styled.div`
   width: 123px;
   height: 36px;
   border-radius: 32px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   gap:10px;
   justify-content: center;
   align-items: center;

@@ -1,20 +1,27 @@
 import { ContainerUser } from "./styles";
 import Router from "next/router";
-import { ReactNode } from "react";
+
 interface Iprops {
   name: string;
   fontColor: string;
   path: string;
-  profile?: boolean;
+  type?: "navibar"| "profile";
   typeUser?: "advertiser" | "buyer";
+  center?: boolean;
+  fontWeight?: number;
+  pColor?: string;
 }
 
 export default function User({
   name,
   fontColor,
   path,
-  profile,
+  type,
   typeUser,
+  center,
+  fontWeight,
+  pColor
+  
 }: Iprops) {
   const acronymName = name.trim().toUpperCase().split(" ");
   const redirect = (data: string) => {
@@ -22,18 +29,21 @@ export default function User({
   };
   return (
     <ContainerUser
-      profile={profile}
+      pColor={pColor}
+      type={type}
       fontColor={fontColor}
+      center ={center}
+      fontWeight ={fontWeight}
       onClick={() => redirect(path)}
     >
       <div>
         <div>
-          <p className="profile-name">
+          <p className="sigla-name">
             {acronymName[0][0] + acronymName[1][0]}
           </p>
         </div>
         <div>
-          <p>{name}</p>
+          <p className="profile-name">{name}</p>
           {typeUser && <div className="profile-type">{typeUser}</div>}
         </div>
       </div>

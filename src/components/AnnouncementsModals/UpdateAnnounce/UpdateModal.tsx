@@ -16,9 +16,9 @@ export default function ModalUpdateAnnounce() {
       <Button
         Propsfunction={handler}
         value={"Editar"}
-        fontColor={"#FFFFFF"}
-        width="160px"
-        color={"#4529E6"}
+        fontColor={"#000000"}
+        width="100px"
+        borderColor={"#000000"}
       />
 
       <Modal

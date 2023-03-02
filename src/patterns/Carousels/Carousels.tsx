@@ -3,7 +3,12 @@ import Announcement from "@/components/Announcement/Announcement";
 import { useContext } from "react";
 import { ApiContext } from "@/contexts/ApiContext";
 import Carousel from "@/components/Carousel/Carousel";
-export default function Carousels() {
+
+interface Iprops{
+  profile?: boolean;
+  
+}
+export default function Carousels({profile}:Iprops) {
 
   const { annoucements } = useContext(ApiContext);
   
@@ -13,6 +18,8 @@ export default function Carousels() {
         <Carousel title={"Motos"}>
           {annoucements.map((ele, index) => (
             <Announcement
+              id={ele.id}
+              profile={profile}
               price={ele.price}
               advertiser="Pedro Silva"
               year={ele.year}
@@ -30,6 +37,8 @@ export default function Carousels() {
         <Carousel title={"Motos"}>
           {annoucements.map((ele, index) => (
             <Announcement
+              id={ele.id}
+              profile={profile}
               price={ele.price}
               advertiser="Pedro Silva"
               year={ele.year}

@@ -61,7 +61,7 @@ export const GlobalStyle = createGlobalStyle`
   --grey10: #FDFDFD;
  
   --whiteFixed: #FFFFFF;
-
+  --white: #FFFFFF;
   --alert01: #CD2B31;
   --alert02: #FDD8D8;
   --alert03: #FFE5E5;
@@ -124,11 +124,8 @@ export const GlobalStyle = createGlobalStyle`
   font-family: 'Inter', sans-serif;
   color: black;
 }
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+html, body, #root{
+  min-height: 100vh;
 }
 
 button{
@@ -141,11 +138,11 @@ ul{
   list-style: none;
 }
 body {
-  background:var(--grey08)
+  min-height: 100vh;
+  background:var(--grey08);
 }
 
 a {
   text-decoration: none;
 }
-
 `;

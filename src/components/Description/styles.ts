@@ -8,7 +8,7 @@ export const ContainerDescription = styled.div<containerProps>`
   gap: 16px;
   display: flex;
   flex-direction: column;
-
+  height: 70px;
   h2,
   p {
     text-align: left;

@@ -1,5 +1,6 @@
 export const array = [
   {
+    id: "1",
     title: "Ford Fiesta",
     price: 25000,
     km: 50000,
@@ -10,6 +11,7 @@ export const array = [
     year: 2020,
   },
   {
+    id: "2",
     title: "Chevrolet Onix",
     price: 28000,
     km: 40000,
@@ -20,6 +22,7 @@ export const array = [
     year: 2020,
   },
   {
+    id: "3",
     title: "Toyota Hilux",
     price: 80000,
     km: 80000,
@@ -29,6 +32,7 @@ export const array = [
     year: 2020,
   },
   {
+    id: "4",
     title: "Renault Duster",
     price: 35000,
     km: 70000,
@@ -39,6 +43,7 @@ export const array = [
     year: 2020,
   },
   {
+    id: "5",
     title: "Hyundai HB20",
     price: 32000,
     km: 55000,
@@ -49,6 +54,7 @@ export const array = [
     year: 2020,
   },
   {
+    id: "6",
     title: "Fiat Cronos",
     price: 38000,
     km: 45000,
@@ -59,6 +65,7 @@ export const array = [
     year: 2020,
   },
   {
+    id: "7",
     title: "Nissan Frontier",
     price: 90000,
     km: 75000,
@@ -70,3 +77,32 @@ export const array = [
   },
 ];
 
+export const arrayImg = [
+  "https://www.clubmotor.com.br/wp-content/uploads/2022/07/fiat-cronos.jpg",
+  "https://cdn.motor1.com/images/mgl/2NN6Mn/s1/nissan-frontier-platinum-2023-teste.webp",
+  "https://fotos.jornaldocarro.estadao.com.br/wp-content/uploads/2022/08/05132152/NOVO-HB20-2-scaled.jpg",
+  "https://s2.glbimg.com/mpv6Dk86Fs6-mIeUF00HkHfdEN8=/696x390/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_cf9d035bf26b4646b105bd958f32089d/internal_photos/bs/2020/B/l/9DRJgHT1SDPcSMmMIezg/2020-03-02-renault-duster-2021-5.jpg",
+  "https://cdn.appdealersites.com.br/saga/00marco/saga.png",
+  "https://conteudo.imguol.com.br/c/entretenimento/95/2021/09/16/ford-fiesta-2022-1631822402689_v2_900x506.jpg"
+
+]
+
+
+export const arrayComments = [
+  {
+    comment : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    time: 1,
+    name: "Pedro Reis"
+  },
+  {
+    comment : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    time: 1,
+    name: "Pedro Reis"
+  },
+  {
+    comment : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    time: 1,
+    name: "Pedro Reis"
+  },
+ 
+]
