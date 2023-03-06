@@ -6,9 +6,13 @@ import Menu from "../Menu/Menu";
 
 export default function ModalNavbar() {
   const { setIsLogged, isOpenMenu } = useContext(AuthContext);
+
   return (
-    <Container>
-      {isOpenMenu && <Menu />}
-    </Container>
+    isOpenMenu ? (
+      <Container>
+        <Menu />
+      </Container>
+    ):
+    <></>
   );
 }

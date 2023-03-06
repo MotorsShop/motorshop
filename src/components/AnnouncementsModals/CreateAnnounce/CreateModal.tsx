@@ -2,9 +2,28 @@ import React, { useContext, useState } from "react";
 import { Modal, Text, Input } from "@nextui-org/react";
 import Button from "@/components/Button/Button";
 import { ContainerButton, ContainerForm, InputForm } from "./styles";
+import { useFormik } from "formik";
 
+interface FormValues {
+  title: string;
+  year: string;
+  description: string;
+  km:string;
+  vehicle_type: "car"| "motorbike";
+}
 export default function ModalAnnounce() {
   const [visible, setVisible] = useState(false);
+  const initialValues: FormValues = { title: "", year: "", description: "", km:"", vehicle_type: "car" };
+  const onSubmit = (values: FormValues, { setSubmitting }: any) => {
+    console.log(values);
+    setSubmitting(false);
+  };
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
+  });
+
+  console.log(formik);
   const handler = () => setVisible(true);
 
   const closeHandler = () => {
@@ -30,7 +49,12 @@ export default function ModalAnnounce() {
         onClose={closeHandler}
       >
         <Modal.Header>
-          <Text id="modal-title" size={18}>
+          <Text
+            style={{ width: "100%", textAlign: "left" }}
+            h2
+            id="modal-title"
+            size={18}
+          >
             Criar Anuncio
           </Text>
         </Modal.Header>
@@ -54,20 +78,45 @@ export default function ModalAnnounce() {
             </ContainerButton>
             <p>Informações do veículo</p>
             <label>Título</label>
-            <InputForm type="text" placeholder="Digitar título" />
-            <label>Ano</label>
-            <InputForm type="text" placeholder="Digitar ano" />
-            <label>Quilometragem</label>
-            <InputForm type="text" placeholder="0" />
-            <label>Preço</label>
-            <InputForm type="text" placeholder="Digitar preço" />
+            <InputForm
+              type="text"
+              name="title"
+              id="title"
+              onChange={formik.handleChange}
+              value={formik.values.title}
+              placeholder="Digitar título"
+            />
+            <div className="container-flex">
+              <div>
+                <label>Ano</label>
+                <InputForm
+                  name="year"
+                  id="year"
+                  onChange={formik.handleChange}
+                  value={formik.values.year}
+                  type="text"
+                  placeholder="Digitar ano"
+                />
+              </div>
+              <div>
+                <label>Quilometragem</label>
+                <InputForm type="text" placeholder="0" />
+              </div>
+              <div>
+                <label>Preço</label>
+                <InputForm type="text" placeholder="Digitar preço" />
+              </div>
+            </div>
             <label>Descrição</label>
-            <textarea name="" id="" cols={parseInt("30")} rows={parseInt("4")}>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Quisquam, accusantium recusandae, totam explicabo fuga non quo
-              quasi natus maxime dignissimos quia facilis fugiat. Blanditiis
-              facere tempore officia totam? Suscipit, consectetur.
-            </textarea>
+            <textarea
+              name="description"
+              onChange={formik.handleChange}
+              id="description"
+              value={formik.values.description}
+              cols={parseInt("30")}
+              rows={parseInt("4")}
+            />
+
             <p>Tipo de veículo</p>
             <ContainerButton>
               <Button

@@ -4,7 +4,7 @@ import Router from "next/router";
 interface Iprops {
   name: string;
   fontColor: string;
-  path: string;
+  path?: string;
   type?: "navibar"| "profile";
   typeUser?: "advertiser" | "buyer";
   center?: boolean;
@@ -25,7 +25,7 @@ export default function User({
 }: Iprops) {
   const acronymName = name.trim().toUpperCase().split(" ");
   const redirect = (data: string) => {
-    Router.push(data);
+      Router.push(data);
   };
   return (
     <ContainerUser
@@ -34,7 +34,7 @@ export default function User({
       fontColor={fontColor}
       center ={center}
       fontWeight ={fontWeight}
-      onClick={() => redirect(path)}
+      onClick={() => path && redirect(path)}
     >
       <div>
         <div>

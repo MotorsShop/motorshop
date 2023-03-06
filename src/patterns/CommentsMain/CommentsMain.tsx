@@ -1,25 +1,25 @@
 import { Container } from "./styles";
+import { Comment as IComment} from "@/contexts/ApiContext";
 import Comment from "@/components/Comment/Comment";
+import { useEffect } from "react";
 
 interface Iprops {
-list: CommentProps[];
+  comments:   IComment[]
 }
-
-interface CommentProps{
-  comment: string
-  time: number
-  name: string
-}
-
-export function CommentsMain({list}: Iprops) {
+export function CommentsMain({ comments}: Iprops) {
   return (
     <Container>
       <h2>Comentários</h2>
-      {list.map((ele, index) => (
-        <li key={index}>
-          <Comment  name={ele.name} comment={ele.comment} time={ele.time} />
-        </li>
-      ))}
+      {comments &&
+        comments.map((ele, index) => (
+          <li key={index}>
+            <Comment
+              name={"Usuário doidão"}
+              comment={ele.comment}
+              time={ele.created}
+            />
+          </li>
+        ))}
     </Container>
   );
 }
