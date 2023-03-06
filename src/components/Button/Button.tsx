@@ -1,25 +1,25 @@
 import React from "react";
 import { ContainerButton } from "./styles";
 
-interface IpropsBotton{   
+interface IpropsBotton {
   color?: string;
   width?: string;
   value?: string;
   fontColor?: string
   borderColor?: string;
   Propsfunction?: any;
-  padding?:string;
+  padding?: string;
 }
-export default function Button({color, value, width, borderColor, fontColor, Propsfunction, padding}: IpropsBotton){
-  
+export default function Button({ color, value, width, borderColor, fontColor, Propsfunction, padding }: IpropsBotton) {
+
   const handleClick = () => {
-    if(Propsfunction){
-       Propsfunction()
+    if (Propsfunction) {
+      Propsfunction()
     }
   }
   return (
     <ContainerButton color={color} width={width} borderColor={borderColor} fontColor={fontColor} padding={padding} onClick={handleClick}>
-     {value}
+      {value}
     </ContainerButton>
   );
 }
