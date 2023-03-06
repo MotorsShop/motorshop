@@ -24,8 +24,6 @@ export const ContainerNav = styled.nav`
 
     ul:first-child {
       border-right: solid var(--grey06) 2px;
-      
-      
     }
 
     ul {
@@ -35,10 +33,20 @@ export const ContainerNav = styled.nav`
       display: flex;
       gap: 44px;
       padding: 0 44px;
-
+      
+    }
+    
+    .user{
+      display: flex;
+      justify-content: center;
+      padding-left: 20px;
+      div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
      
     }
-
     .container_btns {
       display: flex;
       align-items: center;
@@ -46,7 +54,7 @@ export const ContainerNav = styled.nav`
     }
 
     @media screen and (max-width: 900px) {
-      ul, .container_btns{
+      ul, .container_btns, .user{
         display: none;
       }
     }

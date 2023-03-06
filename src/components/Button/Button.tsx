@@ -13,8 +13,10 @@ interface IpropsBotton {
 export default function Button({ color, value, width, borderColor, fontColor, Propsfunction, padding }: IpropsBotton) {
 
   const handleClick = () => {
+
     if (Propsfunction) {
       Propsfunction()
+
     }
   }
   return (

@@ -3,13 +3,15 @@ import styled, { css } from "styled-components";
 export const Container = styled.div`
   background-color: white;
   width: 100%;
-  padding: 40px 5%;
+  padding: 40px 3%;
   display: flex;
   flex-direction: column;
   gap: 25px;
   div {
+    width: 100%;
     max-width: 340px;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     margin: 0 auto;
 
@@ -17,8 +19,9 @@ export const Container = styled.div`
         margin-bottom: 25px;
     }
     ul {
-      justify-content: space-evenly;
+      justify-content: flex-start;
       row-gap: 16px;
+      column-gap: 8px;
       display: flex;
       flex-wrap: wrap;
       li {

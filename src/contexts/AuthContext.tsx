@@ -16,7 +16,7 @@ export const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
 export const AuthProvider = ({ children }: AuthContextProps) =>{
     const [isOpenMenu , setOpenMenu] = useState<boolean>(false);
-    const [isLogged , setIsLogged] = useState<boolean>(false);
+    const [isLogged , setIsLogged] = useState<boolean>(true);
 
     
 
