@@ -2,11 +2,11 @@ import { Container } from "./styles";
 import User from "../User/User";
 import Button from "../Button/Button";
 import { arrayComments } from "public/mockup";
-import { useFormikContext, Formik, Form, Field } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import * as Yup from "yup";
 import { useContext } from "react";
 import { ApiContext } from "@/contexts/ApiContext";
-import { useEffect } from "react";
+
 interface Iprops {
   name: string;
   anoucementId: string;
@@ -56,6 +56,7 @@ export default function CommentInput({ name, anoucementId}: Iprops) {
               placeholder="Carro muito confortável, foi uma ótima experiência de compra..."
             />
             <Button
+              type="submit"
               color={"#4529E6"}
               value="Comentar"
               fontColor="white"

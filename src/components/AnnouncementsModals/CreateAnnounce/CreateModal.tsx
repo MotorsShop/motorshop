@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Modal, Text, Input } from "@nextui-org/react";
 import Button from "@/components/Button/Button";
 import { ContainerButton, ContainerForm, InputForm } from "./styles";
@@ -8,14 +8,23 @@ interface FormValues {
   title: string;
   year: string;
   description: string;
-  km:string;
-  vehicle_type: "car"| "motorbike";
+  km: string;
+  vehicle_type: string;
+  cover_img: string;
 }
 export default function ModalAnnounce() {
   const [visible, setVisible] = useState(false);
-  const initialValues: FormValues = { title: "", year: "", description: "", km:"", vehicle_type: "car" };
+  const [typeCar, setTypeCar] = useState("car");
+  const initialValues: FormValues = {
+    title: "",
+    year: "",
+    description: "",
+    km: "",
+    vehicle_type: typeCar,
+    cover_img: "string",
+  };
   const onSubmit = (values: FormValues, { setSubmitting }: any) => {
-    console.log(values);
+    values.vehicle_type = typeCar;
     setSubmitting(false);
   };
   const formik = useFormik({
@@ -63,18 +72,12 @@ export default function ModalAnnounce() {
             <p>Tipo de anuncio</p>
             <ContainerButton>
               <Button
-                Propsfunction={handler}
                 value={"Venda"}
                 fontColor={"#FFFFFF"}
                 width="228px"
                 color={"#4529E6"}
               />
-              <Button
-                Propsfunction={handler}
-                value={"Leilão"}
-                width="228px"
-                borderColor={"#ADB5BD"}
-              />
+              <Button value={"Leilão"} width="228px" borderColor={"#ADB5BD"} />
             </ContainerButton>
             <p>Informações do veículo</p>
             <label>Título</label>
@@ -120,14 +123,14 @@ export default function ModalAnnounce() {
             <p>Tipo de veículo</p>
             <ContainerButton>
               <Button
-                Propsfunction={handler}
+                Propsfunction={() => setTypeCar("car")}
                 value={"Carro"}
                 fontColor={"#FFFFFF"}
                 width="228px"
                 color={"#4529E6"}
               />
               <Button
-                Propsfunction={handler}
+                Propsfunction={() => setTypeCar("moto")}
                 value={"Moto"}
                 width="228px"
                 borderColor={"#ADB5BD"}
@@ -154,6 +157,7 @@ export default function ModalAnnounce() {
               />
               <Button
                 Propsfunction={handler}
+                type= "submit"
                 value={"Criar anúncio"}
                 width="193px"
                 color={"#B0A6F0"}

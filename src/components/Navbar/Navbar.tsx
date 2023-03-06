@@ -30,7 +30,7 @@ export default function Navbar() {
         {isLogged ? (
           
           <div className="user" onClick={()=> isOpenMenu? setOpenMenu(false): setOpenMenu(true)}>
-             <User fontColor="black"  name="João Pedro"/>
+             <User fontColor="black"  name="Usuário Doidão"/>
           </div>
         
         ) : (

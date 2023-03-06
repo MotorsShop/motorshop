@@ -9,8 +9,9 @@ interface IpropsBotton{
   borderColor?: string;
   Propsfunction?: any;
   padding?:string;
+  type? :"button" | "submit" | "reset" | undefined;
 }
-export default function Button({color, value, width, borderColor, fontColor, Propsfunction, padding}: IpropsBotton){
+export default function Button({color, value, width, borderColor, fontColor, Propsfunction, padding, type}: IpropsBotton){
   
   const handleClick = () => {
    
@@ -19,7 +20,7 @@ export default function Button({color, value, width, borderColor, fontColor, Pro
     }
   }
   return (
-    <ContainerButton color={color} width={width} borderColor={borderColor} fontColor={fontColor} padding={padding} onClick={handleClick}>
+    <ContainerButton color={color} width={width} borderColor={borderColor} type={type? type: "button"} fontColor={fontColor} padding={padding} onClick={handleClick}>
      {value}
     </ContainerButton>
   );
