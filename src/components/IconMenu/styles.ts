@@ -5,8 +5,6 @@ export const ContainerIconMenu = styled.button`
   justify-content: center;
   align-items: center;
  
- 
-
   @media screen and (max-width: 900px) {
     &{
         display: flex;

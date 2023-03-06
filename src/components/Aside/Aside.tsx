@@ -3,12 +3,16 @@ import Button from "../Button/Button";
 import Grade from "../Grade/Grade";
 import User from "../User/User";
 import { arrayImg } from "public/mockup";
+import { Images } from "@/contexts/ApiContext";
 
-export default function Aside() {
+export interface Iprops{
+  images?: Images[];
+}
+export default function Aside({images}: Iprops){
   return (
     <Container>
     
-      <Grade list={arrayImg}/>
+      <Grade list={images}/>
    
       <div className="cotainer-fixed_profile">
         <User

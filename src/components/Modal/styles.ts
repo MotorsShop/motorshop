@@ -10,15 +10,18 @@ interface containerProps {
 }
 
 export const ContainerModal = styled.div<containerProps>`
-  display: none;
+  display: block;
   position: absolute;
   background-color: white;
   z-index: 99999;
+  width: 250px;
+  margin-right: 10px;
   ${({types}) => types=="navbar"  && css`
-    width: 100%;
+    
     @media screen and (max-width: 900px) {
     & {
-      display: block;
+      width: 100%;
+      margin-right: 0;
     }
   }
   `}

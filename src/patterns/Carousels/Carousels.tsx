@@ -14,7 +14,7 @@ export default function Carousels({profile}:Iprops) {
   
   return (
     <ContainerCarousels>
-    {annoucements.length && (
+    {annoucements && (
         <Carousel title={"Motos"}>
           {annoucements.map((ele, index) => (
             <Announcement
@@ -33,7 +33,7 @@ export default function Carousels({profile}:Iprops) {
         </Carousel>
       )}
 
-      {annoucements.length && (
+      {annoucements && (
         <Carousel title={"Motos"}>
           {annoucements.map((ele, index) => (
             <Announcement

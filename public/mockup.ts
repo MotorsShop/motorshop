@@ -90,19 +90,14 @@ export const arrayImg = [
 
 export const arrayComments = [
   {
-    comment : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    time: 1,
-    name: "Pedro Reis"
+    comment : "Gostei muito!",
   },
   {
-    comment : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    time: 1,
-    name: "Pedro Reis"
+    comment : "Incrível",
+    
   },
   {
-    comment : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    time: 1,
-    name: "Pedro Reis"
-  },
+    comment : "Recomendarei para meus amigos!",
+  }
  
 ]

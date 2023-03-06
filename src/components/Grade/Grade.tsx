@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { Container } from "./styles";
-
+import { Images } from "@/contexts/ApiContext";
 interface Iprops {
-  list: string[];
+  list?: Images[];
 }
 
 export default function Grade({ list }: Iprops) {
@@ -13,10 +13,10 @@ export default function Grade({ list }: Iprops) {
       <ul>
         {
           // eslint-disable-next-line @next/next/no-img-element
-          list.map((ele, index) => (
+          list?.map((ele, index) => (
             <li key={index}>
               <figure>
-                <img alt={`car_${index}`} src={ele} />
+                <img alt={`car_${index}`} src={ele.url} />
               </figure>
             </li>
           ))

@@ -25,7 +25,6 @@ export const Container = styled.div`
       max-width: 500px;
       display: flex;
       justify-content: center;
-      background-color: gold;
     }
 
     
