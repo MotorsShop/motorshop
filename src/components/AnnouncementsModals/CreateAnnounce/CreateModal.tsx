@@ -2,9 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { Modal, Text, Input, Container } from "@nextui-org/react";
 import Button from "@/components/Button/Button";
 import FormAnnouncement from "@/components/FormAnnouncement/FormAnnouncement";
+import { useContext } from "react";
+import { ApiContext } from "@/contexts/ApiContext";
+
 export default function ModalAnnounce() {
   const [visible, setVisible] = useState(false);
-
+  const { post } = useContext(ApiContext);
   const handler = () => setVisible(true);
 
   const closeHandler = () => {
@@ -32,7 +35,7 @@ export default function ModalAnnounce() {
         
         <Modal.Body>
          
-          <FormAnnouncement closeHandler={closeHandler} />
+          <FormAnnouncement type={"create"} functionRequest={post} closeHandler={closeHandler} />
           
         </Modal.Body>
       </Modal>

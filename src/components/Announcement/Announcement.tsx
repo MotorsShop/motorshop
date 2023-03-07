@@ -7,7 +7,12 @@ import Price from "../Price/Price";
 import Button from "../Button/Button";
 import ModalUpdateAnnounce from "../AnnouncementsModals/UpdateAnnounce/UpdateModal";
 import Router from "next/router";
-interface Iprops {
+export interface Images {
+  id: string;
+  url: string;
+  anouncementId: string;
+}
+export interface IAnnouncement {
   id: string;
   title: string;
   description: string;
@@ -17,6 +22,7 @@ interface Iprops {
   price: number;
   imageUrl: string;
   profile?: boolean;
+  images: Images[];
 }
 
 export default function Announcement({
@@ -29,7 +35,10 @@ export default function Announcement({
   price,
   imageUrl,
   profile,
-}: Iprops) {
+  images,
+}: IAnnouncement) {
+  const arrayUrl = images?.map(ele => ele.url);
+ 
   return (
     <Container>
       <figure onDoubleClick={() => Router.push(`/vehicle/${id}`)}>
@@ -54,7 +63,7 @@ export default function Announcement({
       </div>
       {profile && (
         <div className="container-btns">
-          <ModalUpdateAnnounce />
+          <ModalUpdateAnnounce images={arrayUrl}  description={description} id={id} price={price} year={year} imageUrl={imageUrl} title={title} km={km} advertiser={advertiser}/>
           <Button
             value="Ver como"
             Propsfunction={() => Router.push(`/vehicle/${id}`)}

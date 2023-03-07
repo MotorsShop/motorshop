@@ -1,7 +1,7 @@
 import { Container } from "./styles";
 import { Comment as IComment} from "@/contexts/ApiContext";
 import Comment from "@/components/Comment/Comment";
-import { useEffect } from "react";
+
 
 interface Iprops {
   comments:   IComment[]

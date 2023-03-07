@@ -18,6 +18,7 @@ export default function Carousels({profile}:Iprops) {
         <Carousel title={"Motos"}>
           {annoucements.map((ele, index) => (
             <Announcement
+              images={ele.images}
               id={ele.id}
               profile={profile}
               price={ele.price}
@@ -37,6 +38,7 @@ export default function Carousels({profile}:Iprops) {
         <Carousel title={"Motos"}>
           {annoucements.map((ele, index) => (
             <Announcement
+              images={ele.images}
               id={ele.id}
               profile={profile}
               price={ele.price}

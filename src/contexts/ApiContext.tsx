@@ -14,6 +14,7 @@ export interface ApiContextData {
   annoucement: IList | null;
   comment: (annoucementId: string, authorId: string, data: Idata) => void;
   post: (data: AnnouncementRequest, closemodal: any) => void;
+  update: (data: AnnouncementRequest, closemodal: any, id?: string) => void;
   setAnnoucement: Dispatch<SetStateAction<IList | null>>;
 }
 
@@ -53,15 +54,15 @@ export interface IList {
   images: Images[];
 }
 export interface AnnouncementRequest {
-  title: string;
-  price: number | "";
-  km: number | "";
-  cover_img: string;
-  description: string;
-  vehicle_type: string;
-  year: number | "";
-  ad_type: string;
-  images: string[];
+  title?: string;
+  price?: number | "";
+  km?: number | "";
+  cover_img?: string;
+  description?: string;
+  vehicle_type?: string;
+  year?: number | "";
+  ad_type?: string;
+  images?: string[];
 }
 
 export interface Comment {
@@ -93,7 +94,7 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
   const [annoucement, setAnnoucement] = useState<IList | null>(null);
   const [comments, setComments] = useState<AxiosResponse<any, any>>();
   const [state, setState] = useState<AxiosResponse<any, any>>();
-
+  // const [updated, setUpdated] = useState<AxiosResponse<any, any>>();
   useEffect(() => {
     listAnnoucements();
   }, [comments, state]);
@@ -132,6 +133,16 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
     }
   };
 
+  const update = async (data: AnnouncementRequest, closemodal: any, id?: string) => {
+    try {
+      const response = await api.patch(`anouncement/${id}`, data);
+      closemodal()
+      setState(response)
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <ApiContext.Provider
       value={{
@@ -140,6 +151,7 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
         setAnnoucement,
         comment,
         post,
+        update,
       }}
     >
       {children}

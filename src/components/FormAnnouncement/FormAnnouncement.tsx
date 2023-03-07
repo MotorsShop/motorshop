@@ -3,29 +3,57 @@ import { Formik, Form, Field, FieldArray } from "formik";
 import * as Yup from "yup";
 import { useState, useRef } from "react";
 import Button from "../Button/Button";
-import { ContainerButton, Container, InputForm, ContainerUrl } from "./styles";
-import { useContext } from "react";
-import { ApiContext } from "@/contexts/ApiContext";
+import { ContainerButton, Container } from "./styles";
+import { AnnouncementRequest } from "@/contexts/ApiContext";
+
 interface Values {
-  title: string;
-  year: number | "";
-  description: string;
-  km: number | "";
-  vehicle_type: string;
-  cover_img: string;
-  ad_type: string;
-  images: never[] | string[];
-  price: number | "";
+  title?: string;
+  year?: number | "";
+  description?: string;
+  km?: number | "";
+  vehicle_type?: string;
+  cover_img?: string;
+  ad_type?: string;
+  images?: never[] | string[];
+  price?: number | "";
   userId: string;
+  published?: boolean;
 }
 
 interface Iprops {
   closeHandler: () => void;
+  functionRequest: (data: AnnouncementRequest, closemodal: any, id?: string) => void;
+  id?: string
+  type: string;
+  description?: string;
+  title?: string;
+  price? : number;
+  year?: number;
+  km?: number;
+  published?: boolean;
+  imageUrl?: string;
+  vehicle_type?: string;
+  images?: string[] | never[];
 }
-export default function FormAnnouncement({ closeHandler }: Iprops) {
+
+export default function FormAnnouncement({
+  closeHandler,
+  functionRequest,
+  id,
+  type,
+  description,
+  imageUrl,
+  images,
+  price,
+  title,
+  year,
+  vehicle_type,
+  published,
+  km,
+}: Iprops) {
   const [typeCar, setTypeCar] = useState("car");
   const [adCar, setAdCar] = useState("sale");
-  const { post } = useContext(ApiContext);
+  const [publicAnnoucement, setpublic] = useState(true);
   const changeTypeVehicle = (type: string) => {
     setTypeCar(type);
   };
@@ -33,34 +61,41 @@ export default function FormAnnouncement({ closeHandler }: Iprops) {
   const changeTypeAd = (type: string) => {
     setAdCar(type);
   };
-
+  console.log(id)
   const handleSubmit = (values: Values) => {
     values.ad_type = adCar;
     values.vehicle_type = typeCar;
     values.km = Number(values.km);
     values.price = Number(values.price);
     values.year = Number(values.year);
-    post(values, closeHandler);
+    functionRequest(values, closeHandler, id);
   };
 
   const initialValues: Values = {
-    title: "",
-    year: "",
-    description: "",
-    km: "",
-    vehicle_type: typeCar,
-    cover_img: "",
+    title: type == "update"? title : "",
+    year: type == "update"? year : "",
+    description: type == "update"? description : "",
+    km: type == "update"? km : "",
+    vehicle_type: type == "update"? vehicle_type : typeCar,
+    cover_img: type == "update"? imageUrl : "",
     ad_type: adCar,
-    price: "",
-    images: [""],
+    published: type == "update"? published : publicAnnoucement,
+    price: type == "update"? price : "",
+    images:type == "update"? images : [""],
     userId: "b7f6da2f-fe36-455c-94e4-7bd3de9a2ddf",
   };
   const schema = Yup.object().shape({
     title: Yup.string().required("O campo é obrigatório"),
-    year: Yup.number().typeError("Deve ser um número").required("O campo é obrigatório"),
+    year: Yup.number()
+      .typeError("Deve ser um número")
+      .required("O campo é obrigatório"),
     description: Yup.string(),
-    price: Yup.number().typeError("Deve ser um número").required("O campo é obrigatório"),
-    km: Yup.number().typeError("Deve ser um número").required("O campo é obrigatório"),
+    price: Yup.number()
+      .typeError("Deve ser um número")
+      .required("O campo é obrigatório"),
+    km: Yup.number()
+      .typeError("Deve ser um número")
+      .required("O campo é obrigatório"),
   });
 
   return (
@@ -72,7 +107,7 @@ export default function FormAnnouncement({ closeHandler }: Iprops) {
       >
         {({ errors, touched }) => (
           <Form>
-            <h2 className="row">Criar anuncio</h2>
+            <h2 className="row">{type === "create"? "Criar anúncio" : "Editar anúncio"}</h2>
             <div className="row">
               <p>Tipo de anuncio</p>
               <ContainerButton>
@@ -102,8 +137,11 @@ export default function FormAnnouncement({ closeHandler }: Iprops) {
                 name="title"
                 id="title"
                 placeholder="Digitar título"
+                value={type=="update"? title: ""}
               />
-              {errors.title && touched.title ? <p className="error-message">{errors.title}</p> : null}
+              {errors.title && touched.title ? (
+                <p className="error-message">{errors.title}</p>
+              ) : null}
             </div>
             <div className="row">
               <div className="container-flex">
@@ -113,19 +151,26 @@ export default function FormAnnouncement({ closeHandler }: Iprops) {
                     name="year"
                     id="year"
                     type="text"
+
                     placeholder="Digitar ano"
                   />
-                  {errors.year && touched.year ? <p className="error-message">{errors.year}</p> : null}
+                  {errors.year && touched.year ? (
+                    <p className="error-message">{errors.year}</p>
+                  ) : null}
                 </div>
                 <div>
                   <label>Quilometragem</label>
                   <Field name="km" id="km" type="text" placeholder="0" />
-                  {errors.km && touched.km ? <p className="error-message">{errors.km}</p> : null}
+                  {errors.km && touched.km ? (
+                    <p className="error-message">{errors.km}</p>
+                  ) : null}
                 </div>
                 <div>
                   <label>Preço</label>
                   <Field name="price" type="text" placeholder="Digitar preço" />
-                  {errors.price && touched.price ? <p className="error-message">{errors.price}</p> : null}
+                  {errors.price && touched.price ? (
+                    <p className="error-message">{errors.price}</p>
+                  ) : null}
                 </div>
               </div>
             </div>
@@ -157,6 +202,30 @@ export default function FormAnnouncement({ closeHandler }: Iprops) {
                 color={typeCar === "motorbike" ? "#4529E6" : undefined}
               />
             </ContainerButton>
+            {type == "update" && (
+              <div className="row">
+                <p>Publicado</p>
+                <ContainerButton>
+                  <Button
+                    Propsfunction={() => setpublic(true)}
+                    value={"Sim"}
+                    fontColor={publicAnnoucement ? "#ffffff" : "black"}
+                    width="228px"
+                    borderColor={publicAnnoucement ? undefined : "#504f51"}
+                    color={publicAnnoucement ? "#4529E6" : undefined}
+                  />
+                  <Button
+                    value={"Não"}
+                    Propsfunction={ () => setpublic(false)}
+                    fontColor={!publicAnnoucement ? "#ffffff" : "black"}
+                    width="228px"
+                    borderColor={!publicAnnoucement ? undefined : "#504f51"}
+                    color={!publicAnnoucement ? "#4529E6" : undefined}
+                  />
+                </ContainerButton>
+              </div>
+            )}
+
             <div className="rows">
               <label>Imagem da capa</label>
               <Field
@@ -174,7 +243,7 @@ export default function FormAnnouncement({ closeHandler }: Iprops) {
                   const { images } = values;
                   return (
                     <div className="input-url">
-                      {images.map((image: string, index: number) => (
+                      {images?.map((image: string, index: number) => (
                         <>
                           <label>{`${index + 1}° Imagem da galeria`}</label>
                           <div key={index}>
@@ -214,7 +283,7 @@ export default function FormAnnouncement({ closeHandler }: Iprops) {
               />
               <Button
                 type="submit"
-                value={"Criar anúncio"}
+                value={type === "create"? "Criar anúncio" : "Salvar alterações"}
                 width="193px"
                 color={"#B0A6F0"}
                 fontColor={"#EDEAFD"}
