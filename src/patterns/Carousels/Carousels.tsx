@@ -1,4 +1,4 @@
-import { ContainerCarousels} from "./styles";
+
 import Announcement from "@/components/Announcement/Announcement";
 import { useContext } from "react";
 import { ApiContext } from "@/contexts/ApiContext";
@@ -13,8 +13,8 @@ export default function Carousels({profile}:Iprops) {
   const { annoucements } = useContext(ApiContext);
   
   return (
-    <ContainerCarousels>
-    {annoucements && (
+  annoucements &&
+    <>
         <Carousel title={"Motos"}>
           {annoucements.map((ele, index) => (
             <Announcement
@@ -31,7 +31,7 @@ export default function Carousels({profile}:Iprops) {
             />
           ))}
         </Carousel>
-      )}
+      
 
       {annoucements && (
         <Carousel title={"Motos"}>
@@ -53,6 +53,6 @@ export default function Carousels({profile}:Iprops) {
       )}
     
 
-    </ContainerCarousels>
+    </>
   );
 }

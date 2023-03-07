@@ -1,38 +1,10 @@
-import React, { useState } from "react";
-import { Modal, Text, Input } from "@nextui-org/react";
+import React, { useEffect, useRef, useState } from "react";
+import { Modal, Text, Input, Container } from "@nextui-org/react";
 import Button from "@/components/Button/Button";
-import { ContainerButton, ContainerForm, InputForm } from "./styles";
-import { useFormik } from "formik";
-
-interface FormValues {
-  title: string;
-  year: string;
-  description: string;
-  km: string;
-  vehicle_type: string;
-  cover_img: string;
-}
+import FormAnnouncement from "@/components/FormAnnouncement/FormAnnouncement";
 export default function ModalAnnounce() {
   const [visible, setVisible] = useState(false);
-  const [typeCar, setTypeCar] = useState("car");
-  const initialValues: FormValues = {
-    title: "",
-    year: "",
-    description: "",
-    km: "",
-    vehicle_type: typeCar,
-    cover_img: "string",
-  };
-  const onSubmit = (values: FormValues, { setSubmitting }: any) => {
-    values.vehicle_type = typeCar;
-    setSubmitting(false);
-  };
-  const formik = useFormik({
-    initialValues,
-    onSubmit,
-  });
 
-  console.log(formik);
   const handler = () => setVisible(true);
 
   const closeHandler = () => {
@@ -50,121 +22,18 @@ export default function ModalAnnounce() {
       />
 
       <Modal
-        css={{ height: "720px" }}
+        css={{ maxHeight: "1000px" }}
         width="550px"
         closeButton
         aria-labelledby="modal-title"
         open={visible}
         onClose={closeHandler}
       >
-        <Modal.Header>
-          <Text
-            style={{ width: "100%", textAlign: "left" }}
-            h2
-            id="modal-title"
-            size={18}
-          >
-            Criar Anuncio
-          </Text>
-        </Modal.Header>
+        
         <Modal.Body>
-          <ContainerForm>
-            <p>Tipo de anuncio</p>
-            <ContainerButton>
-              <Button
-                value={"Venda"}
-                fontColor={"#FFFFFF"}
-                width="228px"
-                color={"#4529E6"}
-              />
-              <Button value={"Leilão"} width="228px" borderColor={"#ADB5BD"} />
-            </ContainerButton>
-            <p>Informações do veículo</p>
-            <label>Título</label>
-            <InputForm
-              type="text"
-              name="title"
-              id="title"
-              onChange={formik.handleChange}
-              value={formik.values.title}
-              placeholder="Digitar título"
-            />
-            <div className="container-flex">
-              <div>
-                <label>Ano</label>
-                <InputForm
-                  name="year"
-                  id="year"
-                  onChange={formik.handleChange}
-                  value={formik.values.year}
-                  type="text"
-                  placeholder="Digitar ano"
-                />
-              </div>
-              <div>
-                <label>Quilometragem</label>
-                <InputForm type="text" placeholder="0" />
-              </div>
-              <div>
-                <label>Preço</label>
-                <InputForm type="text" placeholder="Digitar preço" />
-              </div>
-            </div>
-            <label>Descrição</label>
-            <textarea
-              name="description"
-              onChange={formik.handleChange}
-              id="description"
-              value={formik.values.description}
-              cols={parseInt("30")}
-              rows={parseInt("4")}
-            />
-
-            <p>Tipo de veículo</p>
-            <ContainerButton>
-              <Button
-                Propsfunction={() => setTypeCar("car")}
-                value={"Carro"}
-                fontColor={"#FFFFFF"}
-                width="228px"
-                color={"#4529E6"}
-              />
-              <Button
-                Propsfunction={() => setTypeCar("moto")}
-                value={"Moto"}
-                width="228px"
-                borderColor={"#ADB5BD"}
-              />
-            </ContainerButton>
-            <label>Imagem da capa</label>
-            <InputForm type="text" placeholder="Inserir URL da imagem" />
-            <label>1º imagem da galeria</label>
-            <InputForm type="text" placeholder="Inserir URL da imagem" />
-            <Button
-              Propsfunction={handler}
-              value={"Adicionar campo para imagem da galeria"}
-              fontColor={"#4529e6"}
-              width="370px"
-              color={"#EDEAFD"}
-            />
-            <ContainerButton>
-              <Button
-                Propsfunction={handler}
-                value={"Cancelar"}
-                fontColor={"#495057"}
-                width="126px"
-                color={"#DEE2E6"}
-              />
-              <Button
-                Propsfunction={handler}
-                type= "submit"
-                value={"Criar anúncio"}
-                width="193px"
-                color={"#B0A6F0"}
-                fontColor={"#EDEAFD"}
-              />
-            </ContainerButton>
-          </ContainerForm>
+         
+          <FormAnnouncement closeHandler={closeHandler} />
+          
         </Modal.Body>
       </Modal>
     </div>

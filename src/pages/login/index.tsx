@@ -1,13 +1,6 @@
-import Link from "next/link"
+import ContainerLogin from "@/patterns/ContainerLogin/ContainerLogin";
 
 export default function Login() {
-  return (
-    <>
-    <h1>Página de Login</h1>
-      <div>
-        <Link href={"/"}>Voltar</Link>
-      </div>
-    </>
-      
-  )
+
+  <ContainerLogin/>
 }

@@ -2,7 +2,6 @@ import { Container} from "./styles";
 import Button from "../Button/Button";
 import Grade from "../Grade/Grade";
 import User from "../User/User";
-import { arrayImg } from "public/mockup";
 import { Images } from "@/contexts/ApiContext";
 
 export interface Iprops{

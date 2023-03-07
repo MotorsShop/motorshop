@@ -13,6 +13,7 @@ export interface ApiContextData {
   annoucements: IList[];
   annoucement: IList | null;
   comment: (annoucementId: string, authorId: string, data: Idata) => void;
+  post: (data: AnnouncementRequest, closemodal: any) => void;
   setAnnoucement: Dispatch<SetStateAction<IList | null>>;
 }
 
@@ -25,13 +26,13 @@ export interface IComment {
   user: {
     name: string;
     id: string;
-		email: string;
+    email: string;
     cpf: string;
-		phone: string;
-		date_of_birth: string,
-		description: string,
-		type: string,
-  }
+    phone: string;
+    date_of_birth: string;
+    description: string;
+    type: string;
+  };
 }
 
 export interface IList {
@@ -51,7 +52,17 @@ export interface IList {
   comments: Comment[];
   images: Images[];
 }
-
+export interface AnnouncementRequest {
+  title: string;
+  price: number | "";
+  km: number | "";
+  cover_img: string;
+  description: string;
+  vehicle_type: string;
+  year: number | "";
+  ad_type: string;
+  images: string[];
+}
 
 export interface Comment {
   id: string;
@@ -81,12 +92,11 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
   const [annoucements, setAnnoucements] = useState<never[]>([]);
   const [annoucement, setAnnoucement] = useState<IList | null>(null);
   const [comments, setComments] = useState<AxiosResponse<any, any>>();
-  
-  
+  const [state, setState] = useState<AxiosResponse<any, any>>();
+
   useEffect(() => {
     listAnnoucements();
-  }, [comments]);
-
+  }, [comments, state]);
 
   const listAnnoucements = async () => {
     try {
@@ -104,10 +114,19 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
   ) => {
     try {
       const response = await api.post(`/comment/${annoucementId}`, data);
-      if(response){
-        setComments(response)
+      if (response) {
+        setComments(response);
       }
-      
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const post = async (data: AnnouncementRequest, closemodal: any) => {
+    try {
+      const response = await api.post(`anouncement`, data);
+      closemodal()
+      setState(response)
     } catch (error) {
       console.error(error);
     }
@@ -120,6 +139,7 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
         annoucement,
         setAnnoucement,
         comment,
+        post,
       }}
     >
       {children}

@@ -20,7 +20,7 @@ export function VehicleMain() {
  
   useEffect(() => {
   setAnnoucement(annoucements.find(element => element.id === router.query.vehicleId))
-  }, [annoucements]);
+  }, [annoucements, router.query.vehicleId]);
 
   return (
     <ContainerVehicle>

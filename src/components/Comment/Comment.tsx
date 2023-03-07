@@ -22,34 +22,39 @@ export default function Comment({ comment, time, name }: Iprops) {
     const mouth = Math.floor(days / 30);
     const years = Math.floor(days / 365);
     let elapsedTime = "";
-    console.log(horas);
+ 
 
     if (years > 0) {
       if (years == 1) {
         elapsedTime = `há ${mouth} ano`;
+      } else {
+        elapsedTime = `há ${mouth} anos`;
       }
-      elapsedTime = `há ${mouth} anos`;
     }
     if (mouth > 0) {
       if (mouth == 1) {
         elapsedTime = `há ${mouth} mês`;
+      } else {
+        elapsedTime = `há ${mouth} meses`;
       }
-      elapsedTime = `há ${mouth} meses`;
     } else if (days > 0) {
-      if (days == 1) {
+      if (days === 1) {
         elapsedTime = `há ${horas} dia`;
+      } else {
+        elapsedTime = `há ${days} dias`;
       }
-      elapsedTime = `há ${days} dias`;
     } else if (horas > 0) {
       if (horas == 1) {
         elapsedTime = `há ${horas} hora`;
+      } else {
+        elapsedTime = `há ${horas} horas`;
       }
-      elapsedTime = `há ${horas} horas`;
     } else if (minutes > 0) {
-      if (minutes == 1) {
+      if (minutes === 1) {
         elapsedTime = `há ${minutes} minuto`;
+      } else {
+        elapsedTime = `há ${minutes} minutos`;
       }
-      elapsedTime = `há ${minutes} minutos`;
     } else {
       elapsedTime = "há poucos segundos";
     }

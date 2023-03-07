@@ -1,7 +1,7 @@
 import React from "react";
 import { ContainerButton } from "./styles";
 
-interface IpropsBotton{   
+interface IpropsBotton {
   color?: string;
   width?: string;
   value?: string;
@@ -15,8 +15,8 @@ export default function Button({color, value, width, borderColor, fontColor, Pro
   
   const handleClick = () => {
    
-    if(Propsfunction){
-       Propsfunction()
+    if (Propsfunction) {
+      Propsfunction()
     }
   }
   return (

@@ -13,12 +13,12 @@ export default function Carousel({ title, children }: Iprops) {
   const ref = useRef<HTMLInputElement>(null);
   const [width, setWidth] = useState<number>(0);
 
+  
   useEffect(() => {
     if (ref.current) {
-      console.log(ref.current?.scrollWidth)
       setWidth(ref.current?.scrollWidth - ref.current?.offsetWidth);
     }
-  }, []);
+  }, [ref.current?.offsetWidth, ref.current?.scrollWidth]);
 
   return (
     <ContainerCarousel>

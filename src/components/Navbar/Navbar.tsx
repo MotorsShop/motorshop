@@ -8,23 +8,21 @@ import { AuthContext } from "@/contexts/AuthContext";
 import Router from "next/router";
 import Button from "../Button/Button";
 import ModalNavbar from "../ModalNavbar/ContainerMain";
-import Menu from "../Menu/Menu";
 
 export default function Navbar() {
   const { isLogged, isOpenMenu, setOpenMenu } = useContext(AuthContext);
   
   return (
     <>
-    
     <ContainerNav>
       <figure>
         <Image src="/Logo.svg" width={153.02} height={26.34} alt="logo" />
       </figure>
       <div>
         <ul>
-          <li><Link href={"/cars"}>Carros</Link></li>
-          <li><Link href={"/motorcycles"}>Motos</Link></li>
-          <li><Link href={"/auction"}>Leilão</Link></li>
+          <li><Link href={"/"}>Carros</Link></li>
+          <li><Link href={"/"}>Motos</Link></li>
+          <li><Link href={"/"}>Leilão</Link></li>
         </ul>
 
         {isLogged ? (
