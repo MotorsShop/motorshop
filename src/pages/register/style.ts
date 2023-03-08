@@ -2,14 +2,18 @@ import styled from "styled-components";
 
 export const ContainerTotal = styled.div`
     width: 99vw;
-    height: 100vh;
+    height: 290vh;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media screen and (min-width: 769px){
+        height: 250vh;
+    }
 `
 export const Container = styled.form`
     width: 290px;
-    height: 605px;
+    height: 1550px;
     background-color: #FDFDFD;
     display: flex;
     flex-direction: column;
@@ -17,11 +21,12 @@ export const Container = styled.form`
     margin: 48px 16px;
     border-radius: 10px;
     padding: 30px 16px;
-    overflow: scroll;
-    ;
+    overflow: hidden;
+    
 
     @media screen and (min-width: 769px){
         width: 350px;
+        height: 1550px;
         padding: 40px 24px;
     }
 

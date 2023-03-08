@@ -7,6 +7,8 @@ interface containerProps {
     required?: boolean;
     pattern?: string;
     type: string;
+    name: string;
+    title?: string
 }
 
 export const ContainerInput = styled.input<containerProps>`
