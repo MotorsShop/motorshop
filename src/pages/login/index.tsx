@@ -16,9 +16,9 @@ export default function Login() {
         <Container>
           <h1>Login</h1>
           <label>Usuário</label>
-          <Input placeholder="Digitar usuário" required type="string" />
+          <Input placeholder="Digitar usuário" required type="text" name="name" />
           <label>Senha</label>
-          <Input placeholder="Digitar senha" required type="string" />
+          <Input placeholder="Digitar senha" required type="password" name="password" />
           <button className="buttonForgotPassword">Esqueci minha senha</button>
           <Button
             value="Entrar"
