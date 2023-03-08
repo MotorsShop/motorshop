@@ -9,7 +9,8 @@ export interface Iprops{
   images?: Images[];
 }
 export default function Aside({images}: Iprops){
-   return (
+ 
+  return (
     <Container>
     
       <Grade list={images}/>
@@ -33,12 +34,6 @@ export default function Aside({images}: Iprops){
             fontColor="white"
             value="Ver todos os anuncios"
           />
-          <div className="whatsapp">
-            <a href={`https:wa.me/55${"73981686666"}`} target="_blank" rel="noreferrer">
-          < img className="what_img" src= "/assents/whatsapp.png"  />
-            </a>
-          </div>
-          
         </div>
       </div>
     </Container>

@@ -7,10 +7,12 @@ interface IPropsInput {
     required?: boolean;
     pattern?: string;
     type: string;
+    name: string
+    title?: string
 }
 
-export default function Input({ width, height, placeholder, required, pattern, type }: IPropsInput) {
+export default function Input({ width, height, placeholder, required, pattern, type, name, title }: IPropsInput) {
     return (
-        <ContainerInput width={width} height={height} placeholder={placeholder} type={type} required={required} pattern={pattern} ></ContainerInput>
+        <ContainerInput width={width} height={height} placeholder={placeholder} type={type} required={required} pattern={pattern} name={name} title={title} ></ContainerInput>
     )
 }

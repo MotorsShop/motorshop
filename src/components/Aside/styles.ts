@@ -27,14 +27,4 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
   }
-  .whatsapp {
-    width: 50px;
-    height: 50px;
-    padding-left: 20px;
-  }
-  .what_img {
-    width: 48px;
-    height: 48px;
-    border-radius: 10%;
-  }
 `;
