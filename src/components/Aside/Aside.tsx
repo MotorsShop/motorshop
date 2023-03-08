@@ -9,6 +9,7 @@ export interface Iprops{
   images?: Images[];
 }
 export default function Aside({images}: Iprops){
+ 
   return (
     <Container>
     

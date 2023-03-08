@@ -45,8 +45,9 @@ export default function CommentInput({ name, anoucementId}: Iprops) {
               };
               comment(anoucementId, "b7f6da2f-fe36-455c-94e4-7bd3de9a2ddf", data);
             resetForm();
+          
           }}
-        >
+        > 
           <Form className="container-input">
             <Field
               as="textarea"
