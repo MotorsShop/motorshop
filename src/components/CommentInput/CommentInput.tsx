@@ -46,8 +46,9 @@ export default function CommentInput({ name, anoucementId}: Iprops) {
               console.log(data)
               comment(anoucementId, data);
             resetForm();
+          
           }}
-        >
+        > 
           <Form className="container-input">
             <Field
               as="textarea"

@@ -18,7 +18,9 @@ export default function InfoCar({title, km, year, price}: Iprops) {
         <Price fontColor="black" price={price}/>
        
       </div>
+      <a href={`https:wa.me/55${"73981686666"}`} target="_blank" rel="noreferrer">
       <Button value="Comprar" color="#4529E6" width="100px"  fontColor="white"/>
+      </a>
     </Container>
   );
 }
