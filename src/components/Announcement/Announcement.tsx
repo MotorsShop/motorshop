@@ -5,72 +5,77 @@ import CarData from "../CarData/CarData";
 import User from "../User/User";
 import Price from "../Price/Price";
 import Button from "../Button/Button";
-import ModalUpdateAnnounce from "../AnnouncementsModals/UpdateAnnounce/UpdateModal";
 import Router from "next/router";
-export interface Images {
-  id: string;
-  url: string;
-  anouncementId: string;
-}
-export interface IAnnouncement {
-  id: string;
-  title: string;
-  description: string;
-  year: number;
-  km: number;
-  advertiser: string;
-  price: number;
-  imageUrl: string;
+import { IAnouncement } from "@/@types/PropsComponents";
+
+import { useContext } from "react";
+import { ModalContext } from "@/contexts/ModalContext";
+
+export interface Iprops {
+  data: IAnouncement;
   profile?: boolean;
-  images: Images[];
+  userTag?: boolean;
 }
 
-export default function Announcement({
-  id,
-  title,
-  description,
-  year,
-  km,
-  advertiser,
-  price,
-  imageUrl,
-  profile,
-  images,
-}: IAnnouncement) {
-  const arrayUrl = images?.map(ele => ele.url);
+export default function Announcement({ data, profile, userTag }: Iprops) {
+  const {
+    modalCreate,
+    setModalCreate,
+    setModalEditeData,
+    modalEdite,
+    setModalEdite,
+  } = useContext(ModalContext);
+
+  const selectModal = () =>{
+    setModalEditeData(data);
+    setModalEdite(true)
+    
+  }
  
   return (
-    <Container>
-      <figure onDoubleClick={() => Router.push(`/vehicle/${id}`)}>
-        <img draggable="false" src={imageUrl} alt="car"></img>
-      </figure>
-      <div className="container-text">
-        <Description
-          lines="2"
-          size="small"
-          fontColor="black"
-          title={title}
-          description={description}
-        />
-        {!profile && (
-          <User path="/profile" fontColor="white" name={advertiser} />
-        )}
-
-        <div className="data">
-          <CarData year={year} km={km} />
-          <Price fontColor="black" price={price} />
-        </div>
-      </div>
-      {profile && (
-        <div className="container-btns">
-          <ModalUpdateAnnounce images={arrayUrl}  description={description} id={id} price={price} year={year} imageUrl={imageUrl} title={title} km={km} advertiser={advertiser}/>
-          <Button
-            value="Ver como"
-            Propsfunction={() => Router.push(`/vehicle/${id}`)}
-            borderColor="black"
+    <>
+      <Container>
+        <figure onDoubleClick={() => Router.push(`/vehicle/${data.id}`)}>
+          <img draggable="false" src={data.cover_img} alt="car"></img>
+        </figure>
+        <div className="container-text">
+          <Description
+            lines="2"
+            size="small"
+            fontColor="black"
+            title={data.title}
+            description={data.description}
           />
+          {userTag && (
+            <User
+              path={`profiles/${data.user?.id}`}
+              fontColor="white"
+              name={data.user?.name}
+            />
+          )}
+
+          <div className="data">
+            <CarData year={data.year} km={data.km} />
+            <Price fontColor="black" price={data.price} />
+          </div>
         </div>
-      )}
-    </Container>
+        {profile && (
+          <div className="container-btns">
+            <Button
+              Propsfunction={selectModal}
+              value={"Editar"}
+              fontColor={"#000000"}
+              width="100px"
+              borderColor={"#000000"}
+            />
+            <Button
+              value="Ver como"
+              Propsfunction={() => Router.push(`/vehicle/${data.id}`)}
+              borderColor="black"
+            />
+          </div>
+        )}
+      </Container>
+    </>
   );
 }

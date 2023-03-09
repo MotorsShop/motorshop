@@ -9,6 +9,7 @@ export const ContainerAuction = styled.div`
   overflow: hidden;
   position: relative;
   flex-direction: column;
+  z-index: -1;
 
   .container-btns {
     gap: 16px;

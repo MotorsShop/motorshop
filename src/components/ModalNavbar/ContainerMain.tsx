@@ -1,11 +1,10 @@
 import { Container } from "./styles";
-import Button from "../Button/Button";
 import { useContext } from "react";
-import { AuthContext } from "@/contexts/AuthContext";
+import { ApiContext } from "@/contexts/ApiContext";
 import Menu from "../Menu/Menu";
 
 export default function ModalNavbar() {
-  const { setIsLogged, isOpenMenu } = useContext(AuthContext);
+  const { isOpenMenu } = useContext(ApiContext);
 
   return (
     isOpenMenu ? (

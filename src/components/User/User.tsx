@@ -1,12 +1,13 @@
 import { ContainerUser } from "./styles";
 import Router from "next/router";
-
+import { useEffect } from "react";
+import { useState } from "react";
 interface Iprops {
-  name: string;
+  name: string | undefined;
   fontColor: string;
   path?: string;
-  type?: "navibar"| "profile";
-  typeUser?: "advertiser" | "buyer";
+  type?: "navibar" | "profile";
+  typeUser?: string;
   center?: boolean;
   fontWeight?: number;
   pColor?: string;
@@ -20,27 +21,36 @@ export default function User({
   typeUser,
   center,
   fontWeight,
-  pColor
-  
+  pColor,
 }: Iprops) {
-  const acronymName = name.trim().toUpperCase().split(" ");
+  const [siglaUser, setSiglaUser] = useState("");
+
+  useEffect(() => {
+    if (name) {
+      const nameUser = name.trim().toUpperCase().split(" ");
+      if (nameUser[1]) {
+        setSiglaUser(nameUser[0][0] + nameUser[1][0]);
+      } else {
+        setSiglaUser(nameUser[0][0] + nameUser[0][1]);
+      }
+    }
+  }, [name]);
+
   const redirect = (data: string) => {
-      Router.push(data);
+    Router.push(data);
   };
   return (
     <ContainerUser
       pColor={pColor}
       type={type}
       fontColor={fontColor}
-      center ={center}
-      fontWeight ={fontWeight}
+      center={center}
+      fontWeight={fontWeight}
       onClick={() => path && redirect(path)}
     >
       <div>
         <div>
-          <p className="sigla-name">
-            {acronymName[0][0] + acronymName[1][0]}
-          </p>
+          <p className="sigla-name">{siglaUser}</p>
         </div>
         <div>
           <p className="profile-name">{name}</p>

@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { ReactNode } from "react";
 import React from "react";
-
 interface Iprops {
   title: string;
   children: ReactNode;
@@ -12,7 +11,7 @@ interface Iprops {
 export default function Carousel({ title, children }: Iprops) {
   const ref = useRef<HTMLInputElement>(null);
   const [width, setWidth] = useState<number>(0);
-
+  const [state, setSate] = useState()
   
   useEffect(() => {
     if (ref.current) {
@@ -20,11 +19,17 @@ export default function Carousel({ title, children }: Iprops) {
     }
   }, [ref.current?.offsetWidth, ref.current?.scrollWidth]);
 
+  const resize =() => {
+    if (ref.current) {
+      setWidth(ref.current?.scrollWidth - ref.current?.offsetWidth);
+    }
+  }
   return (
     <ContainerCarousel>
       <h3>{title}</h3>
-      <motion.div className="carrousel">
+      <motion.div key={width} className="carrousel" >
         <motion.div
+          onDrag={resize}
           className="inner"
           ref={ref}
           drag={"x"}

@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 export const ContainerTotal = styled.div`
     width: 99vw;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 `
-export const Container = styled.form`
+export const Container = styled.div`
     width: 290px;
     height: 485px;
     background-color: #FDFDFD;

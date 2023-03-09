@@ -11,7 +11,7 @@ export const ContainerBack = styled.div`
 
 export const ContainerVehicle = styled.div`
   width: 100%;
-
+  min-height: 100vh;
   section {
     width: 100%;
     max-width: 726px;

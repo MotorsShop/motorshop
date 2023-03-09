@@ -15,6 +15,7 @@ export const ContainerNav = styled.nav`
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
   }
 
   & > div {

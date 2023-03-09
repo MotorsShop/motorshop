@@ -22,7 +22,6 @@ export default function Comment({ comment, time, name }: Iprops) {
     const mouth = Math.floor(days / 30);
     const years = Math.floor(days / 365);
     let elapsedTime = "";
- 
 
     if (years > 0) {
       if (years == 1) {

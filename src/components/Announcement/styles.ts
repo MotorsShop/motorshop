@@ -8,6 +8,7 @@ export const Container = styled.div`
   overflow: hidden;
   margin-right: 48px;
   gap: 16px;
+  
   .container-btns {
     display: flex;
     gap: 20px;
@@ -31,10 +32,12 @@ export const Container = styled.div`
     overflow: hidden;
     vertical-align: middle;
     margin: 16px 0;
+    background-color: white;
     img {
+      text-align: center;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
   }
 `;

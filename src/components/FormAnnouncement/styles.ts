@@ -1,11 +1,16 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  padding: 0 15px;
+ 
   h2 {
     font-size: 16px;
     font-family: "Lexend";
     font-weight: 500;
+  
+  }
+  .row {
+    display: flex;
+    flex-direction: column;
   }
   form {
     display: flex;
@@ -13,18 +18,24 @@ export const Container = styled.div`
     gap: 20px;
   }
 
-  .error-message{
+  .error-message {
     margin-top: 10px;
-    color:red;
+    color: red;
     font-size: 12px;
   }
   .input-url {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
     div {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      div {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+
       button {
         margin: 9px 0 0 0;
         height: 50px;
@@ -47,6 +58,10 @@ export const Container = styled.div`
     gap: 8px;
     display: flex;
     justify-content: space-between;
+    div {
+      display: flex;
+      flex-direction: column;
+    }
   }
   .container-btns_create {
     display: flex;
@@ -76,6 +91,7 @@ export const ContainerButton = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  gap: 10px;
   button {
     margin-top: 10px;
   }

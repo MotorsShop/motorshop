@@ -1,11 +1,7 @@
 import styled from "styled-components";
 
 export const ContainerForm = styled.form`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  width: 98%;
-  gap: 10px;
+ 
 `;
 
 export const InputForm = styled.input`

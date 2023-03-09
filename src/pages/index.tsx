@@ -26,7 +26,7 @@ export default function Home() {
         ))}
       </Carousel>
      {
-      annoucements && <Carousels/>
+      <Carousels userTag profile={false} listVehicle={annoucements} />
      }
     </>
   );

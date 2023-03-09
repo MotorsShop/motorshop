@@ -18,8 +18,7 @@ interface Values {
 
 
 export default function CommentInput({ name, anoucementId}: Iprops) {
-  const { comment } = useContext(ApiContext);
-
+  const { comment, currentUser } = useContext(ApiContext);
   return (
     <Container>
       <div className="container-user">
@@ -39,11 +38,13 @@ export default function CommentInput({ name, anoucementId}: Iprops) {
           onSubmit={(
             values: Values, {resetForm}
           ) => {
+
               const data = {
                 comment: values.comment,
-                authorId: "b7f6da2f-fe36-455c-94e4-7bd3de9a2ddf",
+                authorId: currentUser?.id,
               };
-              comment(anoucementId, "b7f6da2f-fe36-455c-94e4-7bd3de9a2ddf", data);
+              console.log(data)
+              comment(anoucementId, data);
             resetForm();
           }}
         >

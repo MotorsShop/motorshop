@@ -11,6 +11,7 @@ export const ContainerFooter = styled.footer`
   align-items: center;
   margin-top:50px;
   justify-content: space-between;
+  z-index: -1;
   p {
     color: var(--whiteFixed);
     font-weight: 400;

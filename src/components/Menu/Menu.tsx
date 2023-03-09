@@ -2,13 +2,13 @@ import { ContainerMenu } from "./styles";
 import Button from "../Button/Button";
 import Modal from "../Modal/Modal";
 import { useContext } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
+import { ApiContext } from "@/contexts/ApiContext";
 import Link from "next/link";
 import Router from "next/router";
 import React from "react";
 
 export default function Menu() {
-  const { setOpenMenu, isLogged } = useContext(AuthContext);
+  const { setOpenMenu, currentUser, logout } = useContext(ApiContext);
 
   const redirect = (url: string) =>{
     Router.push(url)
@@ -17,12 +17,12 @@ export default function Menu() {
   return (
     <Modal types="navbar" functionClose={setOpenMenu}>
       <ContainerMenu>
-        {isLogged ? (
+        {currentUser ? (
           <ul>
             <li>Editar Perfil</li>
             <li>Editar endereço</li>
-            <li>Meus anúncios</li>
-            <li>Sair</li>
+            <li><Link onClick={()=> setOpenMenu(false)} href={"/profile"}>Meus anúncios</Link></li>
+            <li onClick={logout}>Sair</li>
           </ul>
         ) : (
           <>

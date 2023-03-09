@@ -1,11 +1,11 @@
 import { Container } from "./styles";
-import { Comment as IComment} from "@/contexts/ApiContext";
+import { IComment } from "@/@types/PropsComponents";
 import Comment from "@/components/Comment/Comment";
-
 
 interface Iprops {
   comments:   IComment[]
 }
+
 export function CommentsMain({ comments}: Iprops) {
   return (
     <Container>
@@ -14,7 +14,7 @@ export function CommentsMain({ comments}: Iprops) {
         comments.map((ele, index) => (
           <li key={index}>
             <Comment
-              name={"Usuário doidão"}
+              name={ele.author.name}
               comment={ele.comment}
               time={ele.created}
             />

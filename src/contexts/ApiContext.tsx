@@ -9,13 +9,27 @@ import {
 import api from "../services/api";
 import React from "react";
 import { AxiosResponse } from "axios";
+import { IAnouncement } from "@/@types/PropsComponents";
+import Router from "next/router";
+import { IUser, Ilogin } from "@/@types/PropsComponents";
 export interface ApiContextData {
-  annoucements: IList[];
-  annoucement: IList | null;
-  comment: (annoucementId: string, authorId: string, data: Idata) => void;
+  annoucements: IAnouncement[];
+  annoucement: IAnouncement | null;
+  retriveUser:(id: string | string[] | undefined) => Promise<AxiosResponse<any, any> | undefined>;
+  comment: (annoucementId: string, data: Idata) => Promise<void>;
   post: (data: AnnouncementRequest, closemodal: any) => void;
+  deleteAnnouncement: (id: string) => void;
   update: (data: AnnouncementRequest, closemodal: any, id?: string) => void;
-  setAnnoucement: Dispatch<SetStateAction<IList | null>>;
+  setAnnoucement: Dispatch<SetStateAction<IAnouncement | null>>;
+  setListToast: Dispatch<SetStateAction<IlistToast[]>>;
+  confirmeModal: IModalConfirme[];
+  setConfirmeModal: Dispatch<SetStateAction<IModalConfirme[]>>;
+  logout: () => void;
+  login: (data: Ilogin) => Promise<void>;
+  currentUser: IUser| null;
+  isOpenMenu: boolean
+  setOpenMenu: Dispatch<SetStateAction<boolean>>
+  listToast: IlistToast[];
 }
 
 export interface IComment {
@@ -36,23 +50,7 @@ export interface IComment {
   };
 }
 
-export interface IList {
-  id: string;
-  title: string;
-  price: number;
-  km: number;
-  cover_img: string;
-  description: string;
-  vehicle_type: string;
-  year: number;
-  ad_type: string;
-  created: string;
-  published: boolean;
-  sold: boolean;
-  user: any;
-  comments: Comment[];
-  images: Images[];
-}
+
 export interface AnnouncementRequest {
   title?: string;
   price?: number | "";
@@ -81,23 +79,54 @@ export interface Images {
 
 export interface Idata {
   comment: string;
-  authorId: string;
+  authorId: string| undefined;
 }
+
 export interface ApiContextProps {
   children: ReactNode;
+}
+
+interface IlistToast {
+  title: string;
+  text: string;
+  header: string;
+}
+
+interface IModalConfirme {
+  functionAction: (id: any) => any;
+  title: string;
+  text: string;
+  header: string;
 }
 
 export const ApiContext = createContext<ApiContextData>({} as ApiContextData);
 
 export const ApiProvider = ({ children }: ApiContextProps) => {
+  
   const [annoucements, setAnnoucements] = useState<never[]>([]);
-  const [annoucement, setAnnoucement] = useState<IList | null>(null);
+  const [annoucement, setAnnoucement] = useState<IAnouncement | null>(null);
   const [comments, setComments] = useState<AxiosResponse<any, any>>();
   const [state, setState] = useState<AxiosResponse<any, any>>();
-  // const [updated, setUpdated] = useState<AxiosResponse<any, any>>();
+  const [listToast, setListToast] = useState<IlistToast[]>([]);
+  const [confirmeModal, setConfirmeModal] = useState<IModalConfirme[]>([]);
+  const [currentUser, setCurrentUser] = useState<IUser | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [isOpenMenu , setOpenMenu] = useState<boolean>(false);
+
   useEffect(() => {
     listAnnoucements();
   }, [comments, state]);
+ 
+
+  useEffect(() => {
+    const user = localStorage.getItem("@USER");
+    const token = localStorage.getItem("@TOKEN");
+    if (user && token) {
+      setCurrentUser(JSON.parse(user));
+    }
+    setLoading(false);
+  }, [state]);
+
 
   const listAnnoucements = async () => {
     try {
@@ -107,12 +136,22 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
       console.error(error);
     }
   };
+  
 
+  const retriveUser = async (id: string | string[] | undefined) => {
+    try {
+      const response = await api.get(`user/${id}`);
+      return response
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
   const comment = async (
     annoucementId: string,
-    authorId: string,
     data: Idata
   ) => {
+    
     try {
       const response = await api.post(`/comment/${annoucementId}`, data);
       if (response) {
@@ -123,35 +162,109 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
     }
   };
 
+
+  async function login(data: Ilogin) {
+    try {
+      const response = await api.post("/login", data);
+      localStorage.setItem("@TOKEN",  JSON.stringify(response.data.token));
+      localStorage.setItem("@USER", JSON.stringify(response.data.user));
+      Router.push("/profile")
+      setState(response)
+    } catch (error) {
+      console.error(error);
+    }
+  }
+ 
+  function logout() {
+    localStorage.removeItem("@TOKEN");
+    localStorage.removeItem("@USER");
+    Router.push("/")
+    setCurrentUser(null);
+  }
+
+
   const post = async (data: AnnouncementRequest, closemodal: any) => {
+   
     try {
       const response = await api.post(`anouncement`, data);
-      closemodal()
-      setState(response)
+      closemodal();
+      setState(response);
+      setListToast([
+        ...listToast,
+        {
+          title: "Seu anúncio foi criado com sucesso!",
+          header: "Sucesso!",
+          text: "Agora você poderá ver seus negócios crescendo em grande escala",
+        },
+      ]);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const update = async (data: AnnouncementRequest, closemodal: any, id?: string) => {
+  const update = async (
+    data: AnnouncementRequest,
+    closemodal: any,
+    id?: string
+  ) => {
     try {
       const response = await api.patch(`anouncement/${id}`, data);
-      closemodal()
-      setState(response)
+      closemodal();
+      setState(response);
+      setListToast([
+        ...listToast,
+        {
+          title: "Seu anúncio foi atualizado com sucesso!",
+          header: "Sucesso!",
+          text: "Agora você poderá ver seus negócios crescendo em grande escala",
+        },
+      ]);
     } catch (error) {
       console.error(error);
     }
   };
+ 
+  const deleteAnnouncement = async (
+    id: string
+  ) => {
+    console.log(id)
+    try {
+      const response = await api.delete(`anouncement/${id}`);
+      setState(response);
+      setListToast([
+        ...listToast,
+        {
+          title: "Seu anúncio foi deletado com sucesso!",
+          header: "Sucesso!",
+          text: "Crie mais anúncios e alcance mais pessoas",
+        },
+      ]);
+    } catch (error) {
+      console.error(error);
+    }
 
+    
+  };
   return (
     <ApiContext.Provider
       value={{
+        logout,
+        currentUser,
+        isOpenMenu,
+        login,
+        setOpenMenu,
+        retriveUser,
+        deleteAnnouncement,
+        setListToast,
         annoucements,
         annoucement,
         setAnnoucement,
         comment,
         post,
         update,
+        listToast,
+        confirmeModal,
+        setConfirmeModal,
       }}
     >
       {children}
