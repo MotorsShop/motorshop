@@ -8,20 +8,20 @@ interface IpropsBotton {
   fontColor?: string
   borderColor?: string;
   Propsfunction?: any;
-  padding?: string;
+  padding?:string;
+  type? :"button" | "submit" | "reset" | undefined;
 }
-export default function Button({ color, value, width, borderColor, fontColor, Propsfunction, padding }: IpropsBotton) {
-
+export default function Button({color, value, width, borderColor, fontColor, Propsfunction, padding, type}: IpropsBotton){
+  
   const handleClick = () => {
-
+   
     if (Propsfunction) {
       Propsfunction()
-
     }
   }
   return (
-    <ContainerButton color={color} width={width} borderColor={borderColor} fontColor={fontColor} padding={padding} onClick={handleClick}>
-      {value}
+    <ContainerButton color={color} width={width} borderColor={borderColor} type={type? type: "button"} fontColor={fontColor} padding={padding} onClick={handleClick}>
+     {value}
     </ContainerButton>
   );
 }
