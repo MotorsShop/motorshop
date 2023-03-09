@@ -11,7 +11,7 @@ export const ContainerFooter = styled.footer`
   align-items: center;
   margin-top:50px;
   justify-content: space-between;
-  z-index: -1;
+  
   p {
     color: var(--whiteFixed);
     font-weight: 400;
@@ -21,6 +21,8 @@ export const ContainerFooter = styled.footer`
     width: 3.125rem;
     height: 3.125rem;
     background-color: var(--grey01);
+    cursor: pointer;
+    z-index: 9999999;
   }
 
   @media screen and (max-width: 600px) {
