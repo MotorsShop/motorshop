@@ -15,20 +15,24 @@ import { IUser, Ilogin } from "@/@types/PropsComponents";
 export interface ApiContextData {
   annoucements: IAnouncement[];
   annoucement: IAnouncement | null;
-  retriveUser:(id: string | string[] | undefined) => Promise<AxiosResponse<any, any> | undefined>;
+  retriveUser: (
+    id: string | string[] | undefined
+  ) => Promise<AxiosResponse<any, any> | undefined>;
   comment: (annoucementId: string, data: Idata) => Promise<void>;
   post: (data: AnnouncementRequest, closemodal: any) => void;
   deleteAnnouncement: (id: string) => void;
   update: (data: AnnouncementRequest, closemodal: any, id?: string) => void;
   setAnnoucement: Dispatch<SetStateAction<IAnouncement | null>>;
   setListToast: Dispatch<SetStateAction<IlistToast[]>>;
+
   confirmeModal: IModalConfirme[];
   setConfirmeModal: Dispatch<SetStateAction<IModalConfirme[]>>;
   logout: () => void;
   login: (data: Ilogin) => Promise<void>;
-  currentUser: IUser| null;
-  isOpenMenu: boolean
-  setOpenMenu: Dispatch<SetStateAction<boolean>>
+  register: (data: IUserRequest) => Promise<void>;
+  currentUser: IUser | null;
+  isOpenMenu: boolean;
+  setOpenMenu: Dispatch<SetStateAction<boolean>>;
   listToast: IlistToast[];
 }
 
@@ -49,7 +53,6 @@ export interface IComment {
     type: string;
   };
 }
-
 
 export interface AnnouncementRequest {
   title?: string;
@@ -79,11 +82,22 @@ export interface Images {
 
 export interface Idata {
   comment: string;
-  authorId: string| undefined;
+  authorId: string | undefined;
 }
 
 export interface ApiContextProps {
   children: ReactNode;
+}
+
+export interface IUserRequest {
+  name: string;
+  email: string;
+  cpf: string;
+  phone: string;
+  description: string;
+  type: string;
+  password: string;
+  date_of_birth: string;
 }
 
 interface IlistToast {
@@ -102,7 +116,6 @@ interface IModalConfirme {
 export const ApiContext = createContext<ApiContextData>({} as ApiContextData);
 
 export const ApiProvider = ({ children }: ApiContextProps) => {
-  
   const [annoucements, setAnnoucements] = useState<never[]>([]);
   const [annoucement, setAnnoucement] = useState<IAnouncement | null>(null);
   const [comments, setComments] = useState<AxiosResponse<any, any>>();
@@ -111,22 +124,20 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
   const [confirmeModal, setConfirmeModal] = useState<IModalConfirme[]>([]);
   const [currentUser, setCurrentUser] = useState<IUser | null>(null);
   const [loading, setLoading] = useState(true);
-  const [isOpenMenu , setOpenMenu] = useState<boolean>(false);
+  const [isOpenMenu, setOpenMenu] = useState<boolean>(false);
 
   useEffect(() => {
     listAnnoucements();
-  }, [comments, state]);
- 
+  }, [state]);
 
   useEffect(() => {
-    const user = localStorage.getItem("@USER");
     const token = localStorage.getItem("@TOKEN");
+    const user = localStorage.getItem("@USER");
     if (user && token) {
       setCurrentUser(JSON.parse(user));
     }
     setLoading(false);
   }, [state]);
-
 
   const listAnnoucements = async () => {
     try {
@@ -136,22 +147,17 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
       console.error(error);
     }
   };
-  
 
   const retriveUser = async (id: string | string[] | undefined) => {
     try {
       const response = await api.get(`user/${id}`);
-      return response
+      return response;
     } catch (error) {
       console.error(error);
     }
   };
-  
-  const comment = async (
-    annoucementId: string,
-    data: Idata
-  ) => {
-    
+
+  const comment = async (annoucementId: string, data: Idata) => {
     try {
       const response = await api.post(`/comment/${annoucementId}`, data);
       if (response) {
@@ -162,29 +168,37 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
     }
   };
 
-
   async function login(data: Ilogin) {
     try {
       const response = await api.post("/login", data);
-      localStorage.setItem("@TOKEN",  JSON.stringify(response.data.token));
+      localStorage.setItem("@TOKEN", JSON.stringify(response.data.token));
       localStorage.setItem("@USER", JSON.stringify(response.data.user));
-      Router.push("/profile")
-      setState(response)
+      Router.push("/profile");
+      setState(response);
     } catch (error) {
       console.error(error);
     }
   }
- 
+
+  async function register (data: IUserRequest) {
+    try {
+      const response = await api.post("/user", data);
+      console.log(response)
+      Router.push("/login");
+      setState(response);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   function logout() {
     localStorage.removeItem("@TOKEN");
     localStorage.removeItem("@USER");
-    Router.push("/")
+    Router.push("/");
     setCurrentUser(null);
   }
 
-
   const post = async (data: AnnouncementRequest, closemodal: any) => {
-   
     try {
       const response = await api.post(`anouncement`, data);
       closemodal();
@@ -223,11 +237,9 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
       console.error(error);
     }
   };
- 
-  const deleteAnnouncement = async (
-    id: string
-  ) => {
-    console.log(id)
+
+  const deleteAnnouncement = async (id: string) => {
+    console.log(id);
     try {
       const response = await api.delete(`anouncement/${id}`);
       setState(response);
@@ -242,12 +254,11 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
     } catch (error) {
       console.error(error);
     }
-
-    
   };
   return (
     <ApiContext.Provider
       value={{
+        register,
         logout,
         currentUser,
         isOpenMenu,

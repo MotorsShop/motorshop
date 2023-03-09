@@ -1,4 +1,4 @@
-import { Container, ContainerTotal } from "./styles";
+import {  ContainerTotal } from "./styles";
 import Button from "@/components/Button/Button";
 import Router from "next/router";
 import { Formik, Field, Form } from "formik";
@@ -36,7 +36,7 @@ export default function ContainerLogin() {
       >
         {({ errors }) => (
           <Form>
-            <Container>
+            
               <h1>Login</h1>
               <label>Usuário</label>
               <Field type="text" name="email" placeholder="Digitar usuário" />
@@ -72,7 +72,7 @@ export default function ContainerLogin() {
                 fontColor="#DEE2E6"
                 Propsfunction={() => redirect("/register")}
               />
-            </Container>
+            
           </Form>
         )}
       </Formik>

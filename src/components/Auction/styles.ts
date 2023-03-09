@@ -17,12 +17,11 @@ export const ContainerAuction = styled.div`
     bottom: 0;
     width: 100%;
     left: 0;
-    height: 62px;
     display: flex;
     align-items: center;
     background-color: var(--brand01);
-    padding: 0 36px;
-
+    padding: 12px 36px;
+    
     p {
       color: var(--whiteFixed);
       font-size: 16px;

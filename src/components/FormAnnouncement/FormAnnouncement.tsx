@@ -81,7 +81,6 @@ export default function FormAnnouncement({
     functionRequest(values, closeHandler, id);
   };
   const remove = (id: string) => {
-    console.log(id);
     closeHandler();
     setTimeout(() => {
       setConfirmeModal([

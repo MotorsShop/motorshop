@@ -20,9 +20,9 @@ export default function Navbar() {
       </figure>
       <div>
         <ul>
-          <li><Link href={"/"}>Carros</Link></li>
-          <li><Link href={"/"}>Motos</Link></li>
-          <li><Link href={"/"}>Leilão</Link></li>
+          <li><Link href={"#Carros"}>Carros</Link></li>
+          <li><Link href={"#Motos"}>Motos</Link></li>
+          <li><Link href={"#Leilão"}>Leilão</Link></li>
         </ul>
 
         {currentUser ? (
