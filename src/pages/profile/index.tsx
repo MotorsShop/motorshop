@@ -4,6 +4,9 @@ import { useContext, useState } from "react";
 import { ApiContext } from "@/contexts/ApiContext";
 import { useEffect } from "react";
 import { IUser } from "@/@types/PropsComponents";
+import { GetServerSideProps } from "next";
+import { parseCookies } from "nookies";
+import { getAPIClient } from "@/services/axios";
 
 export default function Profile() {
   const {currentUser, retriveUser} = useContext(ApiContext)
@@ -23,4 +26,24 @@ export default function Profile() {
   return (
      <ProfileMain auction={array}  author={user} profile/>
   );
+}
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const apiClient = getAPIClient(ctx);
+  const { ['nextauth.token']: token } = parseCookies(ctx)
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      }
+    }
+  }
+
+  await apiClient.get('/anouncement')
+
+  return {
+    props: {}
+  }
 }
