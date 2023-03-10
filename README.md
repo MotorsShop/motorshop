@@ -52,5 +52,6 @@ Ao utilizar Next.js e Styled Components juntos, é possível obter uma experiên
 
 - [Erika Fábio](https://github.com/erikafabio)
 
+- [José Henrique](https://github.com/zimwolfgang7k)
 
-
+- [Julio Caputo](https://github.com/juliocaputo1)
