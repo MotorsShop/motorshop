@@ -22,7 +22,7 @@ export function VehicleMain() {
   useEffect(() => {
   setAnnoucement(annoucements.find(element => element.id === router.query.vehicleId))
   }, [annoucements, router.query.vehicleId]);
-   
+ 
   return (
     <ContainerVehicle>
       <div className="row">
@@ -34,6 +34,7 @@ export function VehicleMain() {
           {annoucement && (
             <>
               <InfoCar
+                userPhone={annoucement?.user.phone}
                 title={annoucement.title}
                 year={annoucement.year}
                 price={annoucement.price}

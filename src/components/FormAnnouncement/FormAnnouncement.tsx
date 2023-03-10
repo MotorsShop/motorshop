@@ -86,6 +86,7 @@ export default function FormAnnouncement({
     values.vehicle_type = typeCar;
     values.ad_type = adCar;
     values.sold = false;
+    values.year = Number(values.year)
     values.km = Number(values.km);
     values.price = Number(values.price);
     functionRequest(values, closeHandler, id);

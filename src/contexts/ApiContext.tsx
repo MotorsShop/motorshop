@@ -185,6 +185,14 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
       
     } catch (error) {
       console.error(error);
+      setListToast([
+        ...listToast,
+        {
+          title: "",
+          header: "Error",
+          text: "Error",
+        },
+      ]);
     }
   }
 
@@ -195,7 +203,15 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
       Router.push("/login");
       setState(response);
     } catch (error) {
-      console.error(error);
+      console.log(error)
+      setListToast([
+        ...listToast,
+        {
+          title: "",
+          header: "Error",
+          text: "Error",
+        },
+      ]);
     }
   }
 
@@ -221,6 +237,14 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
         },
       ]);
     } catch (error) {
+      setListToast([
+        ...listToast,
+        {
+          title: "",
+          header: "Error",
+          text: "Error",
+        },
+      ]);
       console.error(error);
     }
   };
@@ -246,7 +270,14 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
       ]);
       
     } catch (error) {
-      console.error(error);
+      setListToast([
+        ...listToast,
+        {
+          title: "",
+          header: "Error",
+          text: "Error",
+        },
+      ]);
     }
   };
 
