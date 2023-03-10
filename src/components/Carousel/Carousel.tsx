@@ -26,7 +26,7 @@ export default function Carousel({ title, children }: Iprops) {
   }
   return (
     <ContainerCarousel id={title}>
-      <h3>{title}</h3>
+      <h3 className="title">{title}</h3>
       <motion.div key={width} className="carrousel" >
         <motion.div
           onDrag={resize}

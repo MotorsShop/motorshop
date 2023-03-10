@@ -119,7 +119,6 @@ export const ApiContext = createContext<ApiContextData>({} as ApiContextData);
 export const ApiProvider = ({ children }: ApiContextProps) => {
   const [annoucements, setAnnoucements] = useState<never[]>([]);
   const [annoucement, setAnnoucement] = useState<IAnouncement | null>(null);
-  const [comments, setComments] = useState<AxiosResponse<any, any>>();
   const [state, setState] = useState<AxiosResponse<any, any>>();
   const [listToast, setListToast] = useState<IlistToast[]>([]);
   const [confirmeModal, setConfirmeModal] = useState<IModalConfirme[]>([]);
@@ -133,7 +132,6 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
   useEffect(() => {
     const { "nextauth.token": token } = parseCookies();
     const { "nextauth.userId": id } = parseCookies();
-    console.log(id)
     if (token) {
       retriveUser(id).then((response) => {
         setCurrentUser(response?.data);
@@ -163,7 +161,7 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
     try {
       const response = await api.post(`/comment/${annoucementId}`, data);
       if (response) {
-        setComments(response);
+        setState(response);
       }
     } catch (error) {
       console.error(error);
@@ -199,7 +197,6 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
   async function register(data: IUserRequest) {
     try {
       const response = await api.post("/user", data);
-      console.log(response);
       Router.push("/login");
       setState(response);
     } catch (error) {
@@ -256,8 +253,6 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
   ) => {
     try {
       const response = await api.patch(`anouncement/${id}`, data);
-      console.log(response.data)
-      console.log( data)
       closemodal();
       setState(response);
       setListToast([
@@ -282,7 +277,6 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
   };
 
   const deleteAnnouncement = async (id: string) => {
-    console.log(id);
     try {
       const response = await api.delete(`anouncement/${id}`);
       setState(response);

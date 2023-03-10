@@ -10,7 +10,6 @@ padding: 24px;
   figure {
     max-width: 441px;
     width: 100%;
-    background-color: gold;
     margin: 0 auto;
     display: flex;
     justify-content: center;

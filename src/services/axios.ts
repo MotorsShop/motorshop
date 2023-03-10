@@ -5,7 +5,7 @@ export function getAPIClient(ctx?: any) {
   const { 'nextauth.token': token } = parseCookies(ctx)
 
   const api = axios.create({
-    baseURL: 'https://motorshop-api-naianereis.vercel.app/'
+    baseURL: 'http://localhost:3000/'
   })
 
   api.interceptors.request.use(config => {
