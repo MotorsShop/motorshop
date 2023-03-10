@@ -13,7 +13,7 @@ interface Values {
   year?: number | "";
   description?: string;
   km?: number | "";
-  vehicle_type?: string;
+  vehicle_type?: "car" | "motorbike";
   cover_img?: string;
   ad_type?: string;
   images?: never[] | string[];
@@ -37,10 +37,11 @@ interface Iprops {
   price?: number;
   year?: number;
   km?: number;
+  ad_type?: string;
   sold?: boolean;
   published?: boolean;
   imageUrl?: string;
-  vehicle_type?: string;
+  vehicle_type?: "car" | "motorbike";
   images?: any;
 }
 
@@ -57,29 +58,41 @@ export default function FormAnnouncement({
   year,
   vehicle_type,
   published,
+  ad_type,
   km,
 }: Iprops) {
-  const [typeCar, setTypeCar] = useState("car");
+
+  const [typeCar, setTypeCar] = useState<"car"| "motorbike">("car");
   const [adCar, setAdCar] = useState("sale");
   const [publicAnnoucement, setpublic] = useState(true);
-  const changeTypeVehicle = (type: string) => {
+
+
+  const changeTypeVehicle = (type: "car" | "motorbike") => {
     setTypeCar(type);
   };
+
+
   const { setConfirmeModal, deleteAnnouncement } = useContext(ApiContext);
+
+
   const { currentUser } = useContext(ApiContext);
+
+
   const changeTypeAd = (type: string) => {
     setAdCar(type);
   };
 
   const handleSubmit = (values: Values) => {
-    values.ad_type = adCar;
     values.vehicle_type = typeCar;
+    values.ad_type = adCar;
     values.sold = false;
+    values.year = Number(values.year)
     values.km = Number(values.km);
     values.price = Number(values.price);
-    values.year = Number(values.year);
     functionRequest(values, closeHandler, id);
   };
+
+
   const remove = (id: string) => {
     closeHandler();
     setTimeout(() => {
@@ -95,19 +108,22 @@ export default function FormAnnouncement({
       ]);
     }, 500);
   };
+
+
   const initialValues: Values = {
     title: type == "update" ? title : "",
     year: type == "update" ? year : "",
     description: type == "update" ? description : "",
     km: type == "update" ? km : "",
-    vehicle_type: type == "update" ? vehicle_type : typeCar,
+    vehicle_type: type == "update" ? vehicle_type : "car",
     cover_img: type == "update" ? imageUrl : "",
     ad_type: adCar,
-    published: type == "update" ? published : publicAnnoucement,
+    published: type == "update" ? published : false,
     price: type == "update" ? price : "",
     images: type == "update" ? images : [""],
     userId: currentUser?.id,
   };
+
   const schema = Yup.object().shape({
     title: Yup.string().required("O campo é obrigatório"),
     year: Yup.number()
@@ -132,6 +148,7 @@ export default function FormAnnouncement({
         >
           {({ errors, touched }) => (
             <Form>
+                  
               <div className="row">
                 <p>Tipo de anuncio</p>
                 <ContainerButton>

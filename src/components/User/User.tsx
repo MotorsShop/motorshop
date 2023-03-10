@@ -37,6 +37,7 @@ export default function User({
   }, [name]);
 
   const redirect = (data: string) => {
+    console.log(data)
     Router.push(data);
   };
   return (

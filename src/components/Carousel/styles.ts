@@ -7,7 +7,7 @@ width: 100%;
 overflow: hidden;
 
 h3{
-  margin-bottom: 40px;
+  margin: 40px 0;
 }
  .carrousel{
   .inner{

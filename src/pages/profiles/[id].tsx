@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import { ApiContext } from "@/contexts/ApiContext";
 import { useContext, useEffect } from "react";
 import { useState } from "react";
-import { GetServerSideProps } from "next";
-import { parseCookies } from "nookies";
+
+
 export default function ProfileView() {
   const [user, setUser] = useState<any>()
   const {retriveUser} = useContext(ApiContext)
@@ -27,18 +27,3 @@ export default function ProfileView() {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async(ctx)=> {
-  
-  const {['nextAuth.token']: token} = parseCookies(ctx)
-  if(!token){
-    return{
-      redirect:{
-        destination:'/register',
-        permanent: false,
-      }
-    }
-  }
-  return{
-    props:{}
-  }
-}

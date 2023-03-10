@@ -23,6 +23,7 @@ export default function ModalUpdateAnnounce() {
           imageUrl={modalEditeData?.cover_img}
           images={modalEditeData?.images}
           km={modalEditeData?.km}
+          ad_type={modalEditeData?.ad_type}
           functionRequest={update}
           type={"update"}
           closeHandler={closeHandler}

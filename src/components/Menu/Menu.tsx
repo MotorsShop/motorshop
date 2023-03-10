@@ -14,15 +14,20 @@ export default function Menu() {
     Router.push(url)
     setOpenMenu(false)
   }
+
+  const close = () =>{
+    setOpenMenu(false)
+    logout()
+    
+  }
+
   return (
     <Modal types="navbar" functionClose={setOpenMenu}>
       <ContainerMenu>
         {currentUser ? (
           <ul>
-            <li>Editar Perfil</li>
-            <li>Editar endereço</li>
             <li><Link onClick={()=> setOpenMenu(false)} href={"/profile"}>Meus anúncios</Link></li>
-            <li onClick={logout}>Sair</li>
+            <li onClick={close}>Sair</li>
           </ul>
         ) : (
           <>

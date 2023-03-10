@@ -1,7 +1,7 @@
 import Announcement from "@/components/Announcement/Announcement";
 import Carousel from "@/components/Carousel/Carousel";
 import { IAnouncement } from "@/@types/PropsComponents";
-
+import { Container } from "./styles";
 interface Iprops {
   profile?: boolean;
   listVehicle?: IAnouncement[];
@@ -9,9 +9,10 @@ interface Iprops {
 }
 
 export default function Carousels({ profile, listVehicle, userTag }: Iprops) {
-  return listVehicle ? (
-    <>
-      {listVehicle.length && (
+  return (
+
+    <Container>
+      {listVehicle?.length ? (
         <>
           <Carousel title={"Carros"}>
             {listVehicle
@@ -38,9 +39,15 @@ export default function Carousels({ profile, listVehicle, userTag }: Iprops) {
               ))}
           </Carousel>
         </>
-      )}
-    </>
-  ) : (
-    <h2>Sem aunúncios</h2>
-  );
+      ):
+      <div>
+          <h2>Não há anúncios</h2>
+      </div>
+    }
+    </Container>
+  )
+    
+  
+   
+
 }

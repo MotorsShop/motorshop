@@ -38,7 +38,7 @@ export interface Images {
     km: number;
     cover_img: string;
     description: string;
-    vehicle_type: string;
+    vehicle_type: "car"| "motorbike";
     year: number;
     ad_type: string;
     created: string;
@@ -58,7 +58,7 @@ export interface Images {
     description: string;
     vehicle_type: string;
     year: number;
-    ad_type: string;
+    ad_type: "car"| "motorbike";
     created: string;
     published: boolean;
     sold: boolean;

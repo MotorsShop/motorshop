@@ -6,12 +6,13 @@ import {
   SetStateAction,
   useEffect,
 } from "react";
-import api from "../services/api";
+import { api } from "../services/api";
 import React from "react";
 import { AxiosResponse } from "axios";
 import { IAnouncement } from "@/@types/PropsComponents";
 import Router from "next/router";
 import { IUser, Ilogin } from "@/@types/PropsComponents";
+import { setCookie, parseCookies, destroyCookie } from "nookies";
 export interface ApiContextData {
   annoucements: IAnouncement[];
   annoucement: IAnouncement | null;
@@ -60,7 +61,7 @@ export interface AnnouncementRequest {
   km?: number | "";
   cover_img?: string;
   description?: string;
-  vehicle_type?: string;
+  vehicle_type?: "car"| "motorbike";
   year?: number | "";
   ad_type?: string;
   images?: string[];
@@ -123,7 +124,6 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
   const [listToast, setListToast] = useState<IlistToast[]>([]);
   const [confirmeModal, setConfirmeModal] = useState<IModalConfirme[]>([]);
   const [currentUser, setCurrentUser] = useState<IUser | null>(null);
-  const [loading, setLoading] = useState(true);
   const [isOpenMenu, setOpenMenu] = useState<boolean>(false);
 
   useEffect(() => {
@@ -131,12 +131,14 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
   }, [state]);
 
   useEffect(() => {
-    const token = localStorage.getItem("@TOKEN");
-    const user = localStorage.getItem("@USER");
-    if (user && token) {
-      setCurrentUser(JSON.parse(user));
+    const { "nextauth.token": token } = parseCookies();
+    const { "nextauth.userId": id } = parseCookies();
+    console.log(id)
+    if (token) {
+      retriveUser(id).then((response) => {
+        setCurrentUser(response?.data);
+      });
     }
-    setLoading(false);
   }, [state]);
 
   const listAnnoucements = async () => {
@@ -171,36 +173,59 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
   async function login(data: Ilogin) {
     try {
       const response = await api.post("/login", data);
-      localStorage.setItem("@TOKEN", JSON.stringify(response.data.token));
-      localStorage.setItem("@USER", JSON.stringify(response.data.user));
-      Router.push("/profile");
+      setCookie(undefined, "nextauth.token", response.data.token, {
+        maxAge: 60 * 60 * 8,
+      });
+      setCookie(undefined, "nextauth.userId", response.data.user.id, {
+        maxAge: 60 * 60 * 8,
+      });
       setState(response);
+      api.defaults.headers['Authorization'] = `Bearer ${response.data.token}`
+      Router.push("/profile");
+      
     } catch (error) {
       console.error(error);
+      setListToast([
+        ...listToast,
+        {
+          title: "",
+          header: "Error",
+          text: "Error",
+        },
+      ]);
     }
   }
 
-  async function register (data: IUserRequest) {
+  async function register(data: IUserRequest) {
     try {
       const response = await api.post("/user", data);
-      console.log(response)
+      console.log(response);
       Router.push("/login");
       setState(response);
     } catch (error) {
-      console.error(error);
+      console.log(error)
+      setListToast([
+        ...listToast,
+        {
+          title: "",
+          header: "Error",
+          text: "Error",
+        },
+      ]);
     }
   }
 
   function logout() {
-    localStorage.removeItem("@TOKEN");
-    localStorage.removeItem("@USER");
-    Router.push("/");
+    destroyCookie(undefined, 'nextauth.token')
+    destroyCookie(undefined, 'nextauth.userId')
     setCurrentUser(null);
+    Router.push("/");
   }
 
   const post = async (data: AnnouncementRequest, closemodal: any) => {
     try {
       const response = await api.post(`anouncement`, data);
+      console.log(response);
       closemodal();
       setState(response);
       setListToast([
@@ -212,6 +237,14 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
         },
       ]);
     } catch (error) {
+      setListToast([
+        ...listToast,
+        {
+          title: "",
+          header: "Error",
+          text: "Error",
+        },
+      ]);
       console.error(error);
     }
   };
@@ -223,6 +256,8 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
   ) => {
     try {
       const response = await api.patch(`anouncement/${id}`, data);
+      console.log(response.data)
+      console.log( data)
       closemodal();
       setState(response);
       setListToast([
@@ -233,8 +268,16 @@ export const ApiProvider = ({ children }: ApiContextProps) => {
           text: "Agora você poderá ver seus negócios crescendo em grande escala",
         },
       ]);
+      
     } catch (error) {
-      console.error(error);
+      setListToast([
+        ...listToast,
+        {
+          title: "",
+          header: "Error",
+          text: "Error",
+        },
+      ]);
     }
   };
 
